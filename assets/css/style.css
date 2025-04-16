@@ -71,13 +71,17 @@ nav a.active {
     }
 
     & p {
-        position: absolute;
-        font-size: 30px;
-        top: 25%;
+        font-size: 12px;
+        color: #fff;
+        position: fixed;
+        top: 120%;
         left: 50%;
         transform: translate(-50%);
         z-index: 10;
-        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 }
