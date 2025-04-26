@@ -1,0 +1,1 @@
+// Pondremos la logica para renderizar el mismo html para los detalles de cada articulo
