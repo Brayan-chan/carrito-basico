@@ -3,31 +3,781 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de compras</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>TiendaOnline - Tu Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#FFE600',
+                        accent: '#3483FA',
+                        dark: '#333333',
+                        light: '#EEEEEE'
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+        
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <style>
+        .category-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background-color: #ddd;
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-position: center;
+            -webkit-mask-position: center;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+        }
+        
+        .electronic {
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 14H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.11-.9-2-2-2z'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 14H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.11-.9-2-2-2z'/%3E%3C/svg%3E");
+        }
+        
+        .fashion {
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16 21H8a1 1 0 0 1-1-1v-2h10v2a1 1 0 0 1-1 1zm5-4H3a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1zm-15-6H4v4h2v-4zm10 0h-2v4h2v-4zm4 0h-2v4h2v-4zM10 5a1 1 0 1 0 4 0h-4z'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16 21H8a1 1 0 0 1-1-1v-2h10v2a1 1 0 0 1-1 1zm5-4H3a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1zm-15-6H4v4h2v-4zm10 0h-2v4h2v-4zm4 0h-2v4h2v-4zM10 5a1 1 0 1 0 4 0h-4z'/%3E%3C/svg%3E");
+        }
+        
+        .home {
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z'/%3E%3C/svg%3E");
+        }
+        
+        .product-card {
+            transition: transform 0.2s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .dark .bg-white {
+            background-color: #181818;
+        }
+        
+        .dark .bg-gray-100 {
+            background-color: #222;
+        }
+        
+        .dark .text-gray-700,
+        .dark .text-gray-800,
+        .dark .text-black {
+            color: #eee;
+        }
+        
+        .dark .bg-gray-200 {
+            background-color: #333;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #333;
+        }
+        
+        .dark .category-icon {
+            background-color: #aaa;
+        }
+    </style>
 </head>
-<body>
-    <nav>
-        <ul class="menu">
-            <li><a href="tienda.html">Tienda</a></li>
-            <li><a href="accesorios.html">Accesorios</a></li>
-            <li><a href="index.html">Carrito</a></li>
-            <li><a href="carrito.html">Carrito de compras</a></li>
-        </ul>
-    </nav>
-    <div class="main-section">
-        <h4 class="main-title">iPhone 16 Pro</h4>
-        <p>Diseñado para Apple Intelligence</p>
-        <div class="main-container">
-            <div class="main-image">
-                <img src="https://www.apple.com/euro/home/aa/screens_alt/images/heroes/iphone-16-pro/hero_iphone16pro_avail__fnf0f9x70jiy_mediumtall_2x.jpg" alt="iPhone 16">
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <!-- Top Banner -->
+    <div class="bg-primary text-white text-center py-1 text-xs md:text-sm">
+        <p>¡Envío gratis en pedidos mayores a $500! Usa el código: ENVIOGRATIS</p>
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-secondary py-3 px-4 md:px-6 shadow-md">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="#" class="flex items-center">
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-dark">TiendaOnline</span>
+                </a>
             </div>
-            <div class="main-actions">
-                <button>Más información</button>
-                <button>Comprar</button>
-                <p>Apple Intelligence ya está disponible.</p>
+            
+            <!-- Search Bar (Centered) -->
+            <div class="order-3 md:order-2 w-full md:w-auto mt-3 md:mt-0 flex justify-center md:flex-grow md:mx-6 lg:mx-12">
+                <div class="relative w-full max-w-xl">
+                    <input type="text" placeholder="Buscar productos, marcas y más..." 
+                        class="w-full pl-4 pr-10 py-2 text-base rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation Icons -->
+            <div class="order-2 md:order-3 flex items-center">
+                <div class="hidden md:flex items-center mr-4">
+                    <i class="fas fa-map-marker-alt text-dark mr-1"></i>
+                    <span class="text-sm text-dark">Enviar a</span>
+                </div>
+                
+                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
+                    <i class="far fa-user"></i>
+                    <span class="hidden md:inline ml-1 text-sm">Mi cuenta</span>
+                </a>
+                
+                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary relative">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="hidden md:inline ml-1 text-sm">Carrito</span>
+                    <span class="absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
+                </a>
+                
+                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
+                    <i class="far fa-bell"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation Menu -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center py-2">
+                <div class="mr-6 lg:hidden">
+                    <button class="text-gray-600 dark:text-gray-200 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                
+                <div class="hidden lg:flex lg:flex-grow">
+                    <ul class="flex flex-wrap">
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary font-medium">Categorías</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Ofertas</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Historial</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Supermercado</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Moda</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Vender</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Ayuda</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="#" class="text-dark dark:text-gray-200 hover:text-primary text-sm">
+                        Vender
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <!-- Hero/Banner Section -->
+        <section class="mb-8 rounded-lg overflow-hidden relative">
+            <div class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 md:p-8 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 text-white mb-6 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3">Ofertas de Temporada</h1>
+                    <p class="mb-4">Hasta 40% de descuento en miles de productos</p>
+                    <a href="#" class="inline-block bg-white text-primary font-medium px-6 py-2 rounded-md hover:bg-gray-100 transition">
+                        Ver ofertas
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-3 rounded-lg shadow-lg transform rotate-3">
+                                <div class="h-24 bg-gray-300 rounded-md"></div>
+                                <div class="mt-2 h-4 bg-gray-300 rounded-md"></div>
+                                <div class="mt-2 h-4 w-3/4 bg-gray-300 rounded-md"></div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-lg transform -rotate-3 -mt-4">
+                                <div class="h-24 bg-gray-300 rounded-md"></div>
+                                <div class="mt-2 h-4 bg-gray-300 rounded-md"></div>
+                                <div class="mt-2 h-4 w-3/4 bg-gray-300 rounded-md"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Categories Section -->
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Categorías Populares</h2>
+                <a href="#" class="text-primary hover:underline">Ver todas</a>
+            </div>
+            
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <div class="category-icon electronic bg-primary"></div>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Electrónica</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <div class="category-icon fashion bg-primary"></div>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Moda</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <div class="category-icon home bg-primary"></div>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Hogar</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-mobile-alt text-primary text-xl"></i>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Celulares</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-tshirt text-primary text-xl"></i>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Ropa</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-headphones text-primary text-xl"></i>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Audio</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-laptop text-primary text-xl"></i>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Computación</span>
+                </a>
+                
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-gamepad text-primary text-xl"></i>
+                    </div>
+                    <span class="text-sm text-center text-gray-700 dark:text-gray-300">Videojuegos</span>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Offers Section -->
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Ofertas Destacadas</h2>
+                <a href="#" class="text-primary hover:underline">Ver todas</a>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="relative">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-5xl text-gray-400"></i>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-25%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Smartphone XYZ Pro 128GB - Negro</h3>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500 line-through">$8,999</span>
+                            <span class="text-lg font-bold text-gray-800 dark:text-white">$6,749</span>
+                        </div>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <span class="text-xs text-primary ml-2">FULL</span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-xs text-gray-500">12x $562 sin interés</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="relative">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-headphones text-5xl text-gray-400"></i>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-30%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Auriculares Inalámbricos Bluetooth - Blanco</h3>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500 line-through">$1,999</span>
+                            <span class="text-lg font-bold text-gray-800 dark:text-white">$1,399</span>
+                        </div>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-xs text-gray-500">6x $233 sin interés</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="relative">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-laptop text-5xl text-gray-400"></i>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-15%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Laptop Ultra Delgada 14" 8GB RAM 256GB SSD</h3>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500 line-through">$12,999</span>
+                            <span class="text-lg font-bold text-gray-800 dark:text-white">$11,049</span>
+                        </div>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <span class="text-xs text-primary ml-2">FULL</span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-xs text-gray-500">18x $614 sin interés</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="relative">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-tshirt text-5xl text-gray-400"></i>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-40%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Camiseta Premium Algodón - Varios Colores</h3>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500 line-through">$499</span>
+                            <span class="text-lg font-bold text-gray-800 dark:text-white">$299</span>
+                        </div>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <span class="text-xs text-primary ml-2">FULL</span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-xs text-gray-500">3x $99 sin interés</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="relative">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-blender text-5xl text-gray-400"></i>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-20%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Licuadora de Alto Rendimiento 1000W</h3>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500 line-through">$1,499</span>
+                            <span class="text-lg font-bold text-gray-800 dark:text-white">$1,199</span>
+                        </div>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <span class="text-xs text-primary ml-2">FULL</span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-xs text-gray-500">6x $199 sin interés</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Recently Viewed Section -->
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Visto Recientemente</h2>
+                <a href="#" class="text-primary hover:underline">Ver historial</a>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="h-36 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-tv text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Smart TV 4K 55" UHD</h3>
+                        <span class="text-base font-bold text-gray-800 dark:text-white">$7,999</span>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="h-36 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-chair text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Silla Ergonómica para Oficina</h3>
+                        <span class="text-base font-bold text-gray-800 dark:text-white">$2,499</span>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="h-36 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-coffee text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Cafetera Automática Programable</h3>
+                        <span class="text-base font-bold text-gray-800 dark:text-white">$1,299</span>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="h-36 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-shoe-prints text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Tenis Deportivos - Negro</h3>
+                        <span class="text-base font-bold text-gray-800 dark:text-white">$899</span>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="h-36 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-book text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Libro - Bestseller Internacional</h3>
+                        <span class="text-base font-bold text-gray-800 dark:text-white">$349</span>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Product Card -->
+                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="h-36 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-camera text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Cámara Digital 24MP con Zoom</h3>
+                        <span class="text-base font-bold text-gray-800 dark:text-white">$4,299</span>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Promotional Banners -->
+        <section class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow">
+                <div class="p-6 flex flex-col sm:flex-row items-center">
+                    <div class="mb-4 sm:mb-0 sm:mr-6">
+                        <i class="fas fa-truck-fast text-5xl text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Envío express</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Recibe tus compras en 24 horas</p>
+                        <a href="#" class="text-primary hover:underline text-sm font-medium">Conocer más</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow">
+                <div class="p-6 flex flex-col sm:flex-row items-center">
+                    <div class="mb-4 sm:mb-0 sm:mr-6">
+                        <i class="fas fa-credit-card text-5xl text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Hasta 12 meses sin intereses</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Con tarjetas participantes</p>
+                        <a href="#" class="text-primary hover:underline text-sm font-medium">Ver promociones</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 pt-8 pb-4">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Acerca de nosotros</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Quiénes somos</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Términos y condiciones</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Privacidad</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Trabaja con nosotros</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Ayuda</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Preguntas frecuentes</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Compras y pedidos</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Devoluciones</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Métodos de pago</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Tarjetas de crédito</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Tarjetas de débito</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Transferencia bancaria</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Efectivo</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Conéctate con nosotros</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-800 dark:text-white mb-2">¡Suscríbete a nuestro boletín!</h4>
+                        <div class="flex">
+                            <input type="email" placeholder="Tu correo electrónico" class="w-full px-3 py-2 text-base text-gray-700 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-primary">
+                            <button class="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-primary/90">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 md:mb-0">© 2023 TiendaOnline. Todos los derechos reservados.</p>
+                <div class="flex space-x-2">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23016FD0'/%3E%3Cpath d='M12 17H18V16H12V17Z' fill='white'/%3E%3Cpath d='M18 7H12V8H18V7Z' fill='white'/%3E%3Cpath d='M12 15.5H18V8.5H12V15.5Z' fill='white'/%3E%3Cpath d='M26 10.5C26 9.12 24.88 8 23.5 8H22V13H23.5C24.88 13 26 11.88 26 10.5Z' fill='white'/%3E%3Cpath d='M22 15V14H23.5C25.43 14 27 12.43 27 10.5C27 8.57 25.43 7 23.5 7H21V16H22V15Z' fill='white'/%3E%3C/svg%3E" alt="American Express" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23F79E1B'/%3E%3Cpath d='M14 9.5C14 11.43 15.57 13 17.5 13H23V9.5C23 7.57 21.43 6 19.5 6H14V9.5Z' fill='%23EB001B'/%3E%3Cpath d='M14 14.5C14 12.57 15.57 11 17.5 11H23V14.5C23 16.43 21.43 18 19.5 18H14V14.5Z' fill='%23F79E1B'/%3E%3C/svg%3E" alt="Mastercard" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%231A1F71'/%3E%3Cpath d='M19.5 17H24L26 7H21.5L19.5 17Z' fill='%23F7B600'/%3E%3Cpath d='M13.5 7L11 12.5L10.5 10.5L10 7H8L6 17H8.5L9.5 11L10.5 17H12L15 7H13.5Z' fill='white'/%3E%3Cpath d='M26.5 13.5H29L29.5 11.5H27L27.5 9.5H30L30.5 7H26L24.5 17H29L29.5 15H27L26.5 13.5Z' fill='white'/%3E%3Cpath d='M30.5 17H33L34.5 7H32L30.5 17Z' fill='white'/%3E%3C/svg%3E" alt="Visa" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23003087'/%3E%3Cpath d='M13 9.5H17C18.7 9.5 19.5 10.3 19.4 11.6C19.2 14.1 17.4 14.5 15.7 14.5H14.5L14 17H11.5L13 9.5ZM14.4 12.5H16C16.7 12.5 17 12.2 17 11.7C17 11.3 16.7 11 16 11H14.7L14.4 12.5Z' fill='white'/%3E%3Cpath d='M19 14.5C19 12.6 20.5 11 22.4 11C24.3 11 25.1 12.6 24.5 14.5C23.9 16.4 22 18 20.1 18C18.2 18 18 16.4 19 14.5ZM22 14.5C22.2 13.9 22.1 13.5 21.5 13.5C20.9 13.5 20.5 13.9 20.3 14.5C20.1 15.1 20.2 15.5 20.8 15.5C21.4 15.5 21.8 15.1 22 14.5Z' fill='white'/%3E%3Cpath d='M25 17L26 11H28L27.8 11.7C28.3 11.2 29 11 29.8 11C30.5 11 31.1 11.5 30.8 12.7L30 17H27.5L28.2 13.8C28.3 13.2 28.2 13 27.8 13C27.2 13 27 13.5 26.9 14L26.2 17H25Z' fill='white'/%3E%3C/svg%3E" alt="PayPal" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-10">
+        <div class="flex justify-around">
+            <a href="#" class="flex flex-col items-center py-2 px-3 text-primary">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1">Inicio</span>
+            </a>
+            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-search text-xl"></i>
+                <span class="text-xs mt-1">Buscar</span>
+            </a>
+            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-list text-xl"></i>
+                <span class="text-xs mt-1">Categorías</span>
+            </a>
+            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="text-xs mt-1">Carrito</span>
+            </a>
+            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">Cuenta</span>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Shopping Cart Modal (Hidden by default) -->
+    <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+        <div class="w-full max-w-md bg-white dark:bg-gray-800 h-full overflow-y-auto shadow-xl">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Tu carrito</h2>
+                <button id="closeCart" class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="divide-y divide-gray-200 dark:divide-gray-700">
+                <!-- Cart Item -->
+                <div class="p-4 flex">
+                    <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
+                    <div class="ml-4 flex-grow">
+                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Smartphone XYZ Pro 128GB - Negro</h3>
+                        <div class="flex justify-between mt-1">
+                            <span class="text-primary font-medium">$6,749</span>
+                            <div class="flex items-center">
+                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
+                                <span class="mx-2 text-sm">1</span>
+                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex justify-between items-center">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <button class="text-xs text-red-500">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Item -->
+                <div class="p-4 flex">
+                    <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
+                    <div class="ml-4 flex-grow">
+                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Auriculares Inalámbricos Bluetooth - Blanco</h3>
+                        <div class="flex justify-between mt-1">
+                            <span class="text-primary font-medium">$1,399</span>
+                            <div class="flex items-center">
+                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
+                                <span class="mx-2 text-sm">1</span>
+                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex justify-between items-center">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <button class="text-xs text-red-500">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Item -->
+                <div class="p-4 flex">
+                    <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
+                    <div class="ml-4 flex-grow">
+                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Camiseta Premium Algodón - Rojo (M)</h3>
+                        <div class="flex justify-between mt-1">
+                            <span class="text-primary font-medium">$299</span>
+                            <div class="flex items-center">
+                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
+                                <span class="mx-2 text-sm">1</span>
+                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex justify-between items-center">
+                            <span class="text-xs text-green-600">Envío gratis</span>
+                            <button class="text-xs text-red-500">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 sticky bottom-0">
+                <div class="mb-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600 dark:text-gray-300">Subtotal</span>
+                        <span class="font-medium text-gray-800 dark:text-white">$8,447</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600 dark:text-gray-300">Envío</span>
+                        <span class="font-medium text-green-600">Gratis</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold">
+                        <span class="text-gray-800 dark:text-white">Total</span>
+                        <span class="text-gray-800 dark:text-white">$8,447</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="block bg-primary text-white text-center py-3 rounded-md hover:bg-primary/90 transition">
+                    Proceder al pago
+                </a>
+                
+                <a href="#" class="block text-center text-primary mt-3 hover:underline">
+                    Seguir comprando
+                </a>
             </div>
         </div>
     </div>
+    
+    <script>
+        // Cart Modal Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartButtons = document.querySelectorAll('a[href="#"][class*="fas fa-shopping-cart"]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('cartModal').classList.toggle('hidden');
+                });
+            });
+            
+            // Close cart modal
+            document.getElementById('closeCart').addEventListener('click', () => {
+                document.getElementById('cartModal').classList.add('hidden');
+            });
+            
+            // Close cart when clicking outside
+            document.getElementById('cartModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('cartModal')) {
+                    document.getElementById('cartModal').classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
