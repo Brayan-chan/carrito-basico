@@ -1,1 +1,2 @@
-export const PORT = 3000;
+// Exportar configuraciones
+export const PORT = process.env.PORT || 3000;
