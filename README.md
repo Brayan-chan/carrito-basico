@@ -12,10 +12,10 @@ Modern e-commerce platform built with cutting-edge technologies.
 
 ## Technologies
 
-- Frontend: React.js
-- Backend: Node.js
-- Database: MongoDB
-- Authentication: JWT
+- Frontend: Node.js
+- Backend: Express
+- Database: Firebase
+- Authentication: Firebase Auth
 
 ## Getting Started
 
