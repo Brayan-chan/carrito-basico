@@ -1,10 +1,7 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import morgan from 'morgan';
 import { PORT } from './config/config.js'; // movimos config.js a carpeta config
 import paymentRoutes from './routes/payment.routes.js';
-
-dotenv.config();
 
 const app = express();
 
@@ -20,5 +17,5 @@ app.use('/api', paymentRoutes);
 app.use(express.static('public'));
 
 app.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor ejecutándose en http://localhost:${PORT} 🚀`);
 });
