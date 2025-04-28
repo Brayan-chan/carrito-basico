@@ -45,12 +45,16 @@ export const createOrder = async (req, res) => {
                     }
                 ],
                 back_urls: {
-                    success: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/success`,
+                    /*success: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/success`,
                     failure: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/failure`,
-                    pending: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/pending`
+                    pending: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/pending`*/
+                    success: `https://carrito-basico-plum.vercel.app/api/success`,
+                    failure: `https://carrito-basico-plum.vercel.app/api/failure`,
+                    pending: `https://carrito-basico-plum.vercel.app/api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/webhook`,
+                //notification_url: `https://6876-2806-10be-3-5b74-88b6-14db-c623-14a2.ngrok-free.app/api/webhook`,
+                notification_url: `https://carrito-basico-plum.vercel.app/api/webhook`,
                 external_reference: orderId
             }
         });
