@@ -1,5 +1,5 @@
 
-# 🛒 Carrito API - Productos REST API
+# 🛒 Productos API - Productos REST API
 
 API REST simple para la gestión de productos, inspirada en la API de la NASA. Permite consultar productos, y para usuarios autenticados (mediante una clave API), también agregar, actualizar y eliminar productos.
 
