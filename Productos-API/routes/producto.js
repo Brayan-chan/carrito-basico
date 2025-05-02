@@ -1,13 +1,12 @@
-// routes/productos.js
+// routes/producto.js
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
 
-// Simulación de base de datos en memoria
-let productos = [
-  { id: 1, nombre: 'Laptop', precio: 1200, stock: 5, imagenUrl: 'https://via.placeholder.com/150' },
-  { id: 2, nombre: 'Ratón', precio: 25, stock: 0, imagenUrl: 'https://via.placeholder.com/150' },
-  { id: 3, nombre: 'Teclado', precio: 50, stock: 3, imagenUrl: 'https://via.placeholder.com/150' }
-];
+// Cargar productos desde archivo productos.json
+const productosPath = path.join(__dirname, '../productos.json');
+let productos = require(productosPath);
 
 // Middleware para marcar si el producto está agotado
 function actualizarAgotado(producto) {
@@ -53,6 +52,7 @@ router.post('/', verificarAdmin, (req, res) => {
   };
 
   productos.push(nuevoProducto);
+  guardarProductos();
   res.status(201).json(actualizarAgotado(nuevoProducto));
 });
 
@@ -67,6 +67,7 @@ router.put('/:id', verificarAdmin, (req, res) => {
     producto.precio = precio ?? producto.precio;
     producto.stock = stock ?? producto.stock;
     producto.imagenUrl = imagenUrl ?? producto.imagenUrl;
+    guardarProductos();
     res.json(actualizarAgotado(producto));
   } else {
     res.status(404).json({ mensaje: 'Producto no encontrado' });
@@ -79,10 +80,16 @@ router.delete('/:id', verificarAdmin, (req, res) => {
   const index = productos.findIndex(p => p.id === id);
   if (index !== -1) {
     const eliminado = productos.splice(index, 1);
+    guardarProductos();
     res.json(actualizarAgotado(eliminado[0]));
   } else {
     res.status(404).json({ mensaje: 'Producto no encontrado' });
   }
 });
 
-module.exports = route
+// Función para guardar los productos en el archivo JSON
+function guardarProductos() {
+  fs.writeFileSync(productosPath, JSON.stringify(productos, null, 2));
+}
+
+module.exports = router;
