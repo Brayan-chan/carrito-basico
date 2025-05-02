@@ -136,13 +136,9 @@ fetch('http://localhost:3000/api/productos', {
 
 ---
 
-## 📄 Licencia
 
-Este proyecto es libre de uso educativo. Puedes adaptarlo según tus necesidades.
-
----
 
 ## 💬 Créditos
 
-Desarrollado por [Tu Nombre o Usuario de GitHub]  
+  
 Inspirado en el modelo de la NASA "Picture of the Day API"
