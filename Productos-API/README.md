@@ -48,7 +48,7 @@ npm start
 ```
 
 La API estará disponible en:  
-👉 `http://localhost:3000 y pra ver los productos en (http://localhost:3000/api/productos)`
+👉 `http://localhost:3000 y para ver los productos en (http://localhost:3000/api/productos)`
 
 ---
 
