@@ -1,0 +1,22 @@
+[
+  { "id": 1, "nombre": "Laptop Dell XPS 13", "precio": 1500, "imagen": "https://res.cloudinary.com/demo/image/upload/laptop_dell.jpg" },
+  { "id": 2, "nombre": "iPhone 14 Pro", "precio": 1200, "imagen": "https://res.cloudinary.com/demo/image/upload/iphone14pro.jpg" },
+  { "id": 3, "nombre": "Samsung Galaxy S23", "precio": 1100, "imagen": "https://res.cloudinary.com/demo/image/upload/galaxy_s23.jpg" },
+  { "id": 4, "nombre": "Smartwatch Apple Watch 9", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/apple_watch.jpg" },
+  { "id": 5, "nombre": "Auriculares Sony WH-1000XM5", "precio": 350, "imagen": "https://res.cloudinary.com/demo/image/upload/sony_headphones.jpg" },
+  { "id": 6, "nombre": "Tablet iPad Air", "precio": 700, "imagen": "https://res.cloudinary.com/demo/image/upload/ipad_air.jpg" },
+  { "id": 7, "nombre": "Teclado Mecánico Logitech", "precio": 150, "imagen": "https://res.cloudinary.com/demo/image/upload/logitech_keyboard.jpg" },
+  { "id": 8, "nombre": "Mouse Gamer Razer", "precio": 90, "imagen": "https://res.cloudinary.com/demo/image/upload/razer_mouse.jpg" },
+  { "id": 9, "nombre": "Monitor LG Ultrawide 34\"", "precio": 600, "imagen": "https://res.cloudinary.com/demo/image/upload/lg_monitor.jpg" },
+  { "id": 10, "nombre": "Cámara GoPro Hero11", "precio": 400, "imagen": "https://res.cloudinary.com/demo/image/upload/gopro_hero11.jpg" },
+  { "id": 11, "nombre": "Nintendo Switch OLED", "precio": 350, "imagen": "https://res.cloudinary.com/demo/image/upload/nintendo_switch.jpg" },
+  { "id": 12, "nombre": "PlayStation 5", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/ps5.jpg" },
+  { "id": 13, "nombre": "Xbox Series X", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/xbox_seriesx.jpg" },
+  { "id": 14, "nombre": "Drone DJI Mini 3 Pro", "precio": 900, "imagen": "https://res.cloudinary.com/demo/image/upload/dji_mini3.jpg" },
+  { "id": 15, "nombre": "Smart TV Samsung 55\"", "precio": 800, "imagen": "https://res.cloudinary.com/demo/image/upload/samsung_tv.jpg" },
+  { "id": 16, "nombre": "Router TP-Link AX6000", "precio": 250, "imagen": "https://res.cloudinary.com/demo/image/upload/tplink_router.jpg" },
+  { "id": 17, "nombre": "Disco Duro SSD Samsung 1TB", "precio": 130, "imagen": "https://res.cloudinary.com/demo/image/upload/samsung_ssd.jpg" },
+  { "id": 18, "nombre": "Impresora HP DeskJet", "precio": 120, "imagen": "https://res.cloudinary.com/demo/image/upload/hp_printer.jpg" },
+  { "id": 19, "nombre": "Bocina JBL Charge 5", "precio": 180, "imagen": "https://res.cloudinary.com/demo/image/upload/jbl_charge5.jpg" },
+  { "id": 20, "nombre": "Kindle Paperwhite", "precio": 140, "imagen": "https://res.cloudinary.com/demo/image/upload/kindle_paperwhite.jpg" }
+]
