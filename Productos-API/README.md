@@ -17,7 +17,7 @@ API REST simple para la gestión de productos, inspirada en la API de la NASA. P
 ## 📁 Estructura del proyecto
 
 ```
-carrito-API/
+productos-API/
 ├── index.js
 ├── package.json
 ├── routes/
