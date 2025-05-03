@@ -45,12 +45,12 @@ export const createOrder = async (req, res) => {
                     }
                 ],
                 back_urls: {
-                    success: `https://4eae-187-189-54-10.ngrok-free.app/api/success`,
-                    failure: `https://4eae-187-189-54-10.ngrok-free.app/api/failure`,
-                    pending: `https://4eae-187-189-54-10.ngrok-free.app/api/pending`
+                    success: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/success`,
+                    failure: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/failure`,
+                    pending: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: `https://4eae-187-189-54-10.ngrok-free.app/api/webhook`,
+                notification_url: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/webhook`,
                 external_reference: orderId
             }
         });
