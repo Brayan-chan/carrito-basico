@@ -6,7 +6,7 @@
   { "id": 5, "nombre": "Auriculares Sony WH-1000XM5", "precio": 350, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245760/Auriculares_Sony_WH-1000XM5_ywlsw6.jpg" },
   { "id": 6, "nombre": "Tablet iPad Air", "precio": 700, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245904/Tablet_iPad_Air_lpsori.jpg" },
   { "id": 7, "nombre": "Teclado Mecánico Logitech", "precio": 150, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245993/Teclado_Mec%C3%A1nico_Logitech_ltugh1.jpg" },
-  { "id": 8, "nombre": "Mouse Gamer Razer", "precio": 90, "imagen": "https://res.cloudinary.com/demo/image/upload/razer_mouse.jpg" },
+  { "id": 8, "nombre": "Mouse Gamer Razer", "precio": 90, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246108/Mouse_Gamer_Razer_brju7t.jpg" },
   { "id": 9, "nombre": "Monitor LG Ultrawide 34\"", "precio": 600, "imagen": "https://res.cloudinary.com/demo/image/upload/lg_monitor.jpg" },
   { "id": 10, "nombre": "Cámara GoPro Hero11", "precio": 400, "imagen": "https://res.cloudinary.com/demo/image/upload/gopro_hero11.jpg" },
   { "id": 11, "nombre": "Nintendo Switch OLED", "precio": 350, "imagen": "https://res.cloudinary.com/demo/image/upload/nintendo_switch.jpg" },
