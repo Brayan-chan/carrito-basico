@@ -39,18 +39,18 @@ export const createOrder = async (req, res) => {
                 items: [
                     {
                         title: product?.title || 'iPhone 16 Plus',
-                        unit_price: product?.price || 10,
+                        unit_price: product?.price || 5,
                         currency_id: 'MXN',
                         quantity: product?.quantity || 1,
                     }
                 ],
                 back_urls: {
-                    success: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/success`,
-                    failure: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/failure`,
-                    pending: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/pending`
+                    success: `https://carrito-basico-five.vercel.app//api/success`,
+                    failure: `https://carrito-basico-five.vercel.app//api/failure`,
+                    pending: `https://carrito-basico-five.vercel.app//api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: ` https://3682-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app/api/webhook`,
+                notification_url: `https://carrito-basico-five.vercel.app//api/webhook`,
                 external_reference: orderId
             }
         });
