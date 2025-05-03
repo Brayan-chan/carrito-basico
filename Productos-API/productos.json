@@ -2,7 +2,7 @@
   { "id": 1, "nombre": "Laptop Dell XPS 13", "precio": 1500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746244860/Port%C3%A1til_Dell_XPS_13_hcw2sy.jpg" },
   { "id": 2, "nombre": "iPhone 14 Pro", "precio": 1200, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg" },
   { "id": 3, "nombre": "Samsung Galaxy S23", "precio": 1100, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg" },
-  { "id": 4, "nombre": "Smartwatch Apple Watch 9", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/apple_watch.jpg" },
+  { "id": 4, "nombre": "Smartwatch Apple Watch 9", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245478/Apple_whatch_3_mynicw.jpg" },
   { "id": 5, "nombre": "Auriculares Sony WH-1000XM5", "precio": 350, "imagen": "https://res.cloudinary.com/demo/image/upload/sony_headphones.jpg" },
   { "id": 6, "nombre": "Tablet iPad Air", "precio": 700, "imagen": "https://res.cloudinary.com/demo/image/upload/ipad_air.jpg" },
   { "id": 7, "nombre": "Teclado Mecánico Logitech", "precio": 150, "imagen": "https://res.cloudinary.com/demo/image/upload/logitech_keyboard.jpg" },
