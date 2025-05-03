@@ -10,7 +10,7 @@
   { "id": 9, "nombre": "Monitor LG Ultrawide 34\"", "precio": 600, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246267/Monitor_LG_Ultrawide_34_zd7c3x.jpg" },
   { "id": 10, "nombre": "Cámara GoPro Hero11", "precio": 400, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246442/C%C3%A1mara_GoPro_Hero11_vfu3iu.jpg" },
   { "id": 11, "nombre": "Nintendo Switch OLED", "precio": 350, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246627/Nintendo_Switch_OLED_zcimfi.jpg" },
-  { "id": 12, "nombre": "PlayStation 5", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/ps5.jpg" },
+  { "id": 12, "nombre": "PlayStation 5", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246898/PlayStation_5_dcb2vt.jpg" },
   { "id": 13, "nombre": "Xbox Series X", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/xbox_seriesx.jpg" },
   { "id": 14, "nombre": "Drone DJI Mini 3 Pro", "precio": 900, "imagen": "https://res.cloudinary.com/demo/image/upload/dji_mini3.jpg" },
   { "id": 15, "nombre": "Smart TV Samsung 55\"", "precio": 800, "imagen": "https://res.cloudinary.com/demo/image/upload/samsung_tv.jpg" },
