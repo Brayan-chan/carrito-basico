@@ -45,12 +45,12 @@ export const createOrder = async (req, res) => {
                     }
                 ],
                 back_urls: {
-                    success: `https://carrito-basico-five.vercel.app//api/success`,
-                    failure: `https://carrito-basico-five.vercel.app//api/failure`,
-                    pending: `https://carrito-basico-five.vercel.app//api/pending`
+                    success: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/success`,
+                    failure: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/failure`,
+                    pending: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: `https://carrito-basico-five.vercel.app//api/webhook`,
+                notification_url: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/webhook`,
                 external_reference: orderId
             }
         });
