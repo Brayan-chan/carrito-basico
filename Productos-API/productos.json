@@ -3,7 +3,7 @@
   { "id": 2, "nombre": "iPhone 14 Pro", "precio": 1200, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg" },
   { "id": 3, "nombre": "Samsung Galaxy S23", "precio": 1100, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg" },
   { "id": 4, "nombre": "Smartwatch Apple Watch 9", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245478/Apple_whatch_3_mynicw.jpg" },
-  { "id": 5, "nombre": "Auriculares Sony WH-1000XM5", "precio": 350, "imagen": "https://res.cloudinary.com/demo/image/upload/sony_headphones.jpg" },
+  { "id": 5, "nombre": "Auriculares Sony WH-1000XM5", "precio": 350, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245760/Auriculares_Sony_WH-1000XM5_ywlsw6.jpg" },
   { "id": 6, "nombre": "Tablet iPad Air", "precio": 700, "imagen": "https://res.cloudinary.com/demo/image/upload/ipad_air.jpg" },
   { "id": 7, "nombre": "Teclado Mecánico Logitech", "precio": 150, "imagen": "https://res.cloudinary.com/demo/image/upload/logitech_keyboard.jpg" },
   { "id": 8, "nombre": "Mouse Gamer Razer", "precio": 90, "imagen": "https://res.cloudinary.com/demo/image/upload/razer_mouse.jpg" },
