@@ -1,5 +1,5 @@
 [
-  { "id": 1, "nombre": "Laptop Dell XPS 13", "precio": 1500, "imagen": "https://res.cloudinary.com/demo/image/upload/laptop_dell.jpg" },
+  { "id": 1, "nombre": "Laptop Dell XPS 13", "precio": 1500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746244860/Port%C3%A1til_Dell_XPS_13_hcw2sy.jpg" },
   { "id": 2, "nombre": "iPhone 14 Pro", "precio": 1200, "imagen": "https://res.cloudinary.com/demo/image/upload/iphone14pro.jpg" },
   { "id": 3, "nombre": "Samsung Galaxy S23", "precio": 1100, "imagen": "https://res.cloudinary.com/demo/image/upload/galaxy_s23.jpg" },
   { "id": 4, "nombre": "Smartwatch Apple Watch 9", "precio": 500, "imagen": "https://res.cloudinary.com/demo/image/upload/apple_watch.jpg" },
