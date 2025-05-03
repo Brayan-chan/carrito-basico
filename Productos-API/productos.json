@@ -1,22 +1,462 @@
 [
-  { "id": 1, "nombre": "Laptop Dell XPS 13", "precio": 1500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746244860/Port%C3%A1til_Dell_XPS_13_hcw2sy.jpg" },
-  { "id": 2, "nombre": "iPhone 14 Pro", "precio": 1200, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg" },
-  { "id": 3, "nombre": "Samsung Galaxy S23", "precio": 1100, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg" },
-  { "id": 4, "nombre": "Smartwatch Apple Watch 9", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245478/Apple_whatch_3_mynicw.jpg" },
-  { "id": 5, "nombre": "Auriculares Sony WH-1000XM5", "precio": 350, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245760/Auriculares_Sony_WH-1000XM5_ywlsw6.jpg" },
-  { "id": 6, "nombre": "Tablet iPad Air", "precio": 700, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245904/Tablet_iPad_Air_lpsori.jpg" },
-  { "id": 7, "nombre": "Teclado Mecánico Logitech", "precio": 150, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245993/Teclado_Mec%C3%A1nico_Logitech_ltugh1.jpg" },
-  { "id": 8, "nombre": "Mouse Gamer Razer", "precio": 90, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246108/Mouse_Gamer_Razer_brju7t.jpg" },
-  { "id": 9, "nombre": "Monitor LG Ultrawide 34\"", "precio": 600, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246267/Monitor_LG_Ultrawide_34_zd7c3x.jpg" },
-  { "id": 10, "nombre": "Cámara GoPro Hero11", "precio": 400, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246442/C%C3%A1mara_GoPro_Hero11_vfu3iu.jpg" },
-  { "id": 11, "nombre": "Nintendo Switch OLED", "precio": 350, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246627/Nintendo_Switch_OLED_zcimfi.jpg" },
-  { "id": 12, "nombre": "PlayStation 5", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246898/PlayStation_5_dcb2vt.jpg" },
-  { "id": 13, "nombre": "Xbox Series X", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246957/Xbox_Series_X_wzebfb.jpg" },
-  { "id": 14, "nombre": "Drone DJI Mini 3 Pro", "precio": 900, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247023/Drone_DJI_Mini_3_Pro_vmitnz.jpg" },
-  { "id": 15, "nombre": "Smart TV Samsung 55\"", "precio": 800, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247101/Smart_TV_Samsung_55_ajuvla.jpg" },
-  { "id": 16, "nombre": "Router TP-Link AX6000", "precio": 250, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247211/Router_TP-Link_AX6000_qxo4iy.jpg" },
-  { "id": 17, "nombre": "Disco Duro SSD Samsung 1TB", "precio": 130, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248413/Disco_Duro_SSD_Samsung_1TB_gsdf3u.jpg" },
-  { "id": 18, "nombre": "Impresora HP DeskJet", "precio": 120, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248504/Impresora_HP_DeskJet_pvezif.jpg" },
-  { "id": 19, "nombre": "Bocina JBL Charge 5", "precio": 180, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248634/Bocina_JBL_Charge_5_iazyla.jpg" },
-  { "id": 20, "nombre": "Kindle Paperwhite", "precio": 140, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248738/Kindle_Paperwhite_hrfjpc.jpg" }
+  {
+    "id": 1,
+    "title": "Laptop Dell XPS 13",
+    "price": 1500,
+    "description": "La Dell XPS 13 es una laptop ultraligera y potente, ideal para profesionales y estudiantes. Cuenta con una pantalla InfinityEdge y un rendimiento excepcional.",
+    "features": [
+      "Pantalla InfinityEdge Full HD+",
+      "Procesador Intel Core i7",
+      "16GB de RAM LPDDR5",
+      "SSD de 512GB NVMe",
+      "Gráficos Intel Iris Xe",
+      "Windows 11 Pro"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746244860/Port%C3%A1til_Dell_XPS_13_hcw2sy.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 15,
+    "rating": 4.8,
+    "reviews": 120,
+    "category": "Electrónica",
+    "subcategory": "Laptops"
+  },
+  {
+    "id": 2,
+    "title": "iPhone 14 Pro",
+    "price": 1200,
+    "description": "El iPhone 14 Pro ofrece un sistema de cámaras avanzado, la potencia del chip A16 Bionic y una pantalla Super Retina XDR con ProMotion.",
+    "features": [
+      "Pantalla Super Retina XDR de 6.1 pulgadas con ProMotion",
+      "Chip A16 Bionic",
+      "Sistema de cámara Pro de 48MP",
+      "Modo Cine hasta 4K HDR a 30 fps",
+      "Resistencia al agua y al polvo IP68",
+      "iOS 16"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 25,
+    "rating": 4.9,
+    "reviews": 185,
+    "category": "Electrónica",
+    "subcategory": "Smartphones"
+  },
+  {
+    "id": 3,
+    "title": "Samsung Galaxy S23",
+    "price": 1100,
+    "description": "El Samsung Galaxy S23 combina un diseño elegante con un rendimiento potente y un sistema de cámaras versátil.",
+    "features": [
+      "Pantalla Dynamic AMOLED 2X de 6.1 pulgadas",
+      "Procesador Snapdragon 8 Gen 2 para Galaxy",
+      "Sistema de triple cámara de 50MP",
+      "Batería de larga duración",
+      "Resistencia al agua y al polvo IP68",
+      "Android 13 con One UI 5.1"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 20,
+    "rating": 4.8,
+    "reviews": 150,
+    "category": "Electrónica",
+    "subcategory": "Smartphones"
+  },
+  {
+    "id": 4,
+    "title": "Smartwatch Apple Watch 9",
+    "price": 500,
+    "description": "El Apple Watch 9 ofrece funciones avanzadas de salud y fitness, una pantalla más brillante y una integración perfecta con el ecosistema Apple.",
+    "features": [
+      "Pantalla Retina siempre activa más brillante",
+      "Chip S9 SiP",
+      "Sensor de temperatura",
+      "Detección de caídas y accidentes",
+      "Resistencia al agua hasta 50 metros",
+      "watchOS 10"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245478/Apple_whatch_3_mynicw.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 35,
+    "rating": 4.7,
+    "reviews": 110,
+    "category": "Electrónica",
+    "subcategory": "Wearables"
+  },
+  {
+    "id": 5,
+    "title": "Auriculares Sony WH-1000XM5",
+    "price": 350,
+    "description": "Los Sony WH-1000XM5 ofrecen una calidad de sonido excepcional y la mejor cancelación de ruido de la industria para una experiencia auditiva inmersiva.",
+    "features": [
+      "Cancelación de ruido líder en la industria",
+      "Sonido de alta resolución",
+      "Hasta 30 horas de batería",
+      "Controles táctiles intuitivos",
+      "Diseño ligero y cómodo",
+      "Conexión Bluetooth 5.2"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245760/Auriculares_Sony_WH-1000XM5_ywlsw6.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 40,
+    "rating": 4.9,
+    "reviews": 200,
+    "category": "Electrónica",
+    "subcategory": "Audio"
+  },
+  {
+    "id": 6,
+    "title": "Tablet iPad Air",
+    "price": 700,
+    "description": "El iPad Air combina un diseño delgado y ligero con el potente chip M1 de Apple, ideal para productividad y creatividad.",
+    "features": [
+      "Pantalla Liquid Retina de 10.9 pulgadas",
+      "Chip M1 de Apple",
+      "Cámara frontal ultra gran angular de 12MP con Center Stage",
+      "Wi-Fi 6",
+      "Puerto USB-C",
+      "Compatible con Apple Pencil (2ª generación)"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245904/Tablet_iPad_Air_lpsori.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 28,
+    "rating": 4.8,
+    "reviews": 135,
+    "category": "Electrónica",
+    "subcategory": "Tablets"
+  },
+  {
+    "id": 7,
+    "title": "Teclado Mecánico Logitech",
+    "price": 150,
+    "description": "Este teclado mecánico de Logitech ofrece una experiencia de escritura táctil y precisa, ideal para largas sesiones de trabajo o gaming.",
+    "features": [
+      "Switches mecánicos GX Brown táctiles",
+      "Retroiluminación RGB LIGHTSYNC personalizable",
+      "Diseño compacto TKL",
+      "Teclas de función programables",
+      "Construcción duradera",
+      "Conexión USB"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245993/Teclado_Mec%C3%A1nico_Logitech_ltugh1.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 50,
+    "rating": 4.6,
+    "reviews": 80,
+    "category": "Electrónica",
+    "subcategory": "Periféricos"
+  },
+  {
+    "id": 8,
+    "title": "Mouse Gamer Razer",
+    "price": 90,
+    "description": "El mouse gamer Razer ofrece alta precisión y velocidad de respuesta para una ventaja competitiva en los juegos.",
+    "features": [
+      "Sensor óptico de 16,000 DPI",
+      "7 botones programables",
+      "Retroiluminación Razer Chroma RGB",
+      "Diseño ergonómico para diestros",
+      "Switches mecánicos Razer",
+      "Ultrapolling de 1000 Hz"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246108/Mouse_Gamer_Razer_brju7t.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 60,
+    "rating": 4.7,
+    "reviews": 95,
+    "category": "Electrónica",
+    "subcategory": "Periféricos"
+  },
+  {
+    "id": 9,
+    "title": "Monitor LG Ultrawide 34\"",
+    "price": 600,
+    "description": "Este monitor LG Ultrawide de 34 pulgadas ofrece una experiencia visual inmersiva para productividad multitarea y entretenimiento.",
+    "features": [
+      "Pantalla IPS Ultrawide de 34 pulgadas (3440 x 1440)",
+      "Relación de aspecto 21:9",
+      "Frecuencia de actualización de 75Hz",
+      "Tiempo de respuesta de 5ms",
+      "AMD FreeSync",
+      "Puertos HDMI y DisplayPort"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246267/Monitor_LG_Ultrawide_34_zd7c3x.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 18,
+    "rating": 4.5,
+    "reviews": 70,
+    "category": "Electrónica",
+    "subcategory": "Monitores"
+  },
+  {
+    "id": 10,
+    "title": "Cámara GoPro Hero11",
+    "price": 400,
+    "description": "La GoPro Hero11 ofrece una calidad de video y foto impresionante, además de una gran durabilidad para capturar tus aventuras.",
+    "features": [
+      "Video de hasta 5.3K60 y fotos de 27MP",
+      "Sensor de imagen más grande",
+      "HyperSmooth 5.0 con AutoBoost",
+      "Bloqueo de horizonte",
+      "Resistente y sumergible hasta 10 metros",
+      "Pantallas LCD frontal y trasera"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246442/C%C3%A1mara_GoPro_Hero11_vfu3iu.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 22,
+    "rating": 4.8,
+    "reviews": 105,
+    "category": "Electrónica",
+    "subcategory": "Cámaras"
+  },
+  {
+    "id": 11,
+    "title": "Nintendo Switch OLED",
+    "price": 350,
+    "description": "La Nintendo Switch OLED cuenta con una vibrante pantalla OLED de 7 pulgadas, un soporte ancho ajustable y 64 GB de almacenamiento interno.",
+    "features": [
+      "Pantalla OLED de 7 pulgadas",
+      "Soporte ancho ajustable",
+      "64 GB de almacenamiento interno",
+      "Audio mejorado en modo portátil",
+      "Modos TV, portátil y sobremesa",
+      "Mandos Joy-Con versátiles"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246627/Nintendo_Switch_OLED_zcimfi.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 30,
+    "rating": 4.9,
+    "reviews": 160,
+    "category": "Electrónica",
+    "subcategory": "Videojuegos"
+  },
+  {
+    "id": 12,
+    "title": "PlayStation 5",
+    "price": 500,
+    "description": "La PlayStation 5 ofrece gráficos de alta velocidad, tiempos de carga ultrarrápidos y una nueva generación de juegos inmersivos.",
+    "features": [
+      "Procesador AMD Ryzen Zen 2",
+      "GPU AMD Radeon RDNA 2",
+      "SSD de 825GB de alta velocidad",
+      "Mando DualSense con retroalimentación háptica y gatillos adaptativos",
+      "Audio 3D Tempest",
+      "Retrocompatibilidad con juegos de PS4"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246898/PlayStation_5_dcb2vt.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 12,
+    "rating": 4.8,
+    "reviews": 140,
+    "category": "Electrónica",
+    "subcategory": "Videojuegos"
+  },
+  {
+    "id": 13,
+    "title": "Xbox Series X",
+    "price": 500,
+    "description": "La Xbox Series X es la consola más potente de Microsoft, ofreciendo juegos en 4K a 120 FPS y tiempos de carga rápidos.",
+    "features": [
+      "Procesador AMD Zen 2 personalizado",
+      "GPU AMD RDNA 2 personalizado",
+      "SSD NVMe de 1TB",
+      "Quick Resume para cambiar entre juegos rápidamente",
+      "Retrocompatibilidad con miles de juegos de Xbox",
+      "Xbox Game Pass Ultimate"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246957/Xbox_Series_X_wzebfb.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 10,
+    "rating": 4.9,
+    "reviews": 175,
+    "category": "Electrónica",
+    "subcategory": "Videojuegos"
+  },
+  {
+    "id": 14,
+    "title": "Drone DJI Mini 3 Pro",
+    "price": 900,
+    "description": "El DJI Mini 3 Pro es un drone ligero y plegable con una cámara potente capaz de grabar video en 4K HDR y tomar fotos de 48MP.",
+    "features": [
+      "Peso inferior a 249 gramos",
+      "Video 4K HDR",
+      "Fotos de 48MP",
+      "Detección de obstáculos tridireccional",
+      "Tiempo de vuelo de hasta 34 minutos",
+      "Transmisión de video FHD a 12 km"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247023/Drone_DJI_Mini_3_Pro_vmitnz.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 16,
+    "rating": 4.7,
+    "reviews": 90,
+    "category": "Electrónica",
+    "subcategory": "Drones"
+  },
+  {
+    "id": 15,
+    "title": "Smart TV Samsung 55\"",
+    "price": 800,
+    "description": "Este Smart TV Samsung de 55 pulgadas ofrece una calidad de imagen 4K UHD con colores vibrantes y un sonido envolvente.",
+    "features": [
+      "Pantalla LED de 55 pulgadas con resolución 4K UHD",
+      "Tecnología HDR para mayor contraste y detalle",
+      "Procesador Crystal 4K",
+      "Smart TV con Tizen",
+      "Múltiples asistentes de voz integrados",
+      "Diseño delgado y elegante"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247101/Smart_TV_Samsung_55_ajuvla.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 18,
+    "rating": 4.6,
+    "reviews": 85,
+    "category": "Electrónica",
+    "subcategory": "Televisores"
+  },
+  {
+    "id": 16,
+    "title": "Router TP-Link AX6000",
+    "price": 250,
+    "description": "El router TP-Link AX6000 ofrece velocidades Wi-Fi ultrarrápidas y una cobertura extensa para conectar todos tus dispositivos.",
+    "features": [
+      "Wi-Fi 6 (802.11ax) de doble banda",
+      "Velocidades de hasta 6000 Mbps",
+      "8 puertos Gigabit Ethernet",
+      "Puerto USB 3.0",
+      "Tecnología OFDMA y MU-MIMO",
+      "Seguridad avanzada HomeShield"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247211/Router_TP-Link_AX6000_qxo4iy.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 25,
+    "rating": 4.5,
+    "reviews": 60,
+    "category": "Electrónica",
+    "subcategory": "Redes"
+  },
+  {
+    "id": 17,
+    "title": "Disco Duro SSD Samsung 1TB",
+    "price": 130,
+    "description": "Este disco duro SSD de Samsung ofrece un almacenamiento rápido y fiable de 1TB para mejorar el rendimiento de tu ordenador.",
+    "features": [
+      "Capacidad de 1TB",
+      "Velocidades de lectura de hasta 3500 MB/s",
+      "Velocidades de escritura de hasta 3000 MB/s",
+      "Interfaz NVMe PCIe Gen3 x4",
+      "Formato M.2 2280",
+      "Alta durabilidad y fiabilidad"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248413/Disco_Duro_SSD_Samsung_1TB_gsdf3u.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 40,
+    "rating": 4.8,
+    "reviews": 115,
+    "category": "Electrónica",
+    "subcategory": "Almacenamiento"
+  },
+  {
+    "id": 18,
+    "title": "Impresora HP DeskJet",
+    "price": 120,
+    "description": "La impresora HP DeskJet es una opción compacta y asequible para imprimir documentos y fotos en casa.",
+    "features": [
+      "Impresión a color y en blanco y negro",
+      "Resolución de impresión de hasta 1200 x 1200 ppp",
+      "Velocidad de impresión de hasta 7.5 ppm (negro) y 5.5 ppm (color)",
+      "Conectividad Wi-Fi",
+      "Impresión móvil con la aplicación HP Smart",
+      "Diseño compacto"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248504/Impresora_HP_DeskJet_pvezif.jpg"
+    ],
+    "freeShipping": false,
+    "stock": 30,
+    "rating": 4.4,
+    "reviews": 55,
+    "category": "Electrónica",
+    "subcategory": "Impresoras"
+  },
+  {
+    "id": 19,
+    "title": "Bocina JBL Charge 5",
+    "price": 180,
+    "description": "La bocina JBL Charge 5 ofrece un sonido potente y graves profundos, además de ser resistente al agua y al polvo.",
+    "features": [
+      "Sonido JBL Pro Original potente",
+      "Batería de larga duración de hasta 20 horas",
+      "Resistencia al agua y al polvo IP67",
+      "PartyBoost para emparejar con otras bocinas JBL",
+      "Powerbank integrado para cargar dispositivos",
+      "Conectividad Bluetooth 5.1"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248634/Bocina_JBL_Charge_5_iazyla.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 38,
+    "rating": 4.7,
+    "reviews": 100,
+    "category": "Electrónica",
+    "subcategory": "Audio"
+  },
+  {
+    "id": 20,
+    "title": "Kindle Paperwhite",
+    "price": 140,
+    "description": "El Kindle Paperwhite ofrece una pantalla de alta resolución sin reflejos y luz cálida ajustable para una lectura cómoda en cualquier condición.",
+    "features": [
+      "Pantalla de 6.8 pulgadas con 300 ppp",
+      "Luz cálida ajustable",
+      "Resistente al agua IPX8",
+      "8 GB de almacenamiento",
+      "Batería de larga duración",
+      "Acceso a millones de libros en Kindle Store"
+    ],
+    "images": [
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248738/Kindle_Paperwhite_hrfjpc.jpg"
+    ],
+    "freeShipping": true,
+    "stock": 45,
+    "rating": 4.9,
+    "reviews": 130,
+    "category": "Electrónica",
+    "subcategory": "E-readers"
+  }
 ]
