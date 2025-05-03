@@ -16,7 +16,7 @@
   { "id": 15, "nombre": "Smart TV Samsung 55\"", "precio": 800, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247101/Smart_TV_Samsung_55_ajuvla.jpg" },
   { "id": 16, "nombre": "Router TP-Link AX6000", "precio": 250, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247211/Router_TP-Link_AX6000_qxo4iy.jpg" },
   { "id": 17, "nombre": "Disco Duro SSD Samsung 1TB", "precio": 130, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248413/Disco_Duro_SSD_Samsung_1TB_gsdf3u.jpg" },
-  { "id": 18, "nombre": "Impresora HP DeskJet", "precio": 120, "imagen": "https://res.cloudinary.com/demo/image/upload/hp_printer.jpg" },
+  { "id": 18, "nombre": "Impresora HP DeskJet", "precio": 120, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248504/Impresora_HP_DeskJet_pvezif.jpg" },
   { "id": 19, "nombre": "Bocina JBL Charge 5", "precio": 180, "imagen": "https://res.cloudinary.com/demo/image/upload/jbl_charge5.jpg" },
   { "id": 20, "nombre": "Kindle Paperwhite", "precio": 140, "imagen": "https://res.cloudinary.com/demo/image/upload/kindle_paperwhite.jpg" }
 ]
