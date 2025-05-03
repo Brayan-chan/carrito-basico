@@ -12,7 +12,7 @@
   { "id": 11, "nombre": "Nintendo Switch OLED", "precio": 350, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246627/Nintendo_Switch_OLED_zcimfi.jpg" },
   { "id": 12, "nombre": "PlayStation 5", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246898/PlayStation_5_dcb2vt.jpg" },
   { "id": 13, "nombre": "Xbox Series X", "precio": 500, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746246957/Xbox_Series_X_wzebfb.jpg" },
-  { "id": 14, "nombre": "Drone DJI Mini 3 Pro", "precio": 900, "imagen": "https://res.cloudinary.com/demo/image/upload/dji_mini3.jpg" },
+  { "id": 14, "nombre": "Drone DJI Mini 3 Pro", "precio": 900, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746247023/Drone_DJI_Mini_3_Pro_vmitnz.jpg" },
   { "id": 15, "nombre": "Smart TV Samsung 55\"", "precio": 800, "imagen": "https://res.cloudinary.com/demo/image/upload/samsung_tv.jpg" },
   { "id": 16, "nombre": "Router TP-Link AX6000", "precio": 250, "imagen": "https://res.cloudinary.com/demo/image/upload/tplink_router.jpg" },
   { "id": 17, "nombre": "Disco Duro SSD Samsung 1TB", "precio": 130, "imagen": "https://res.cloudinary.com/demo/image/upload/samsung_ssd.jpg" },
