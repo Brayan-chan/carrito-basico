@@ -18,5 +18,5 @@
   { "id": 17, "nombre": "Disco Duro SSD Samsung 1TB", "precio": 130, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248413/Disco_Duro_SSD_Samsung_1TB_gsdf3u.jpg" },
   { "id": 18, "nombre": "Impresora HP DeskJet", "precio": 120, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248504/Impresora_HP_DeskJet_pvezif.jpg" },
   { "id": 19, "nombre": "Bocina JBL Charge 5", "precio": 180, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248634/Bocina_JBL_Charge_5_iazyla.jpg" },
-  { "id": 20, "nombre": "Kindle Paperwhite", "precio": 140, "imagen": "https://res.cloudinary.com/demo/image/upload/kindle_paperwhite.jpg" }
+  { "id": 20, "nombre": "Kindle Paperwhite", "precio": 140, "imagen": "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746248738/Kindle_Paperwhite_hrfjpc.jpg" }
 ]
