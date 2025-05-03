@@ -13,8 +13,8 @@
       "Windows 11 Pro"
     ],
     "images": [
-      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746244860/Port%C3%A1til_Dell_XPS_13_hcw2sy.jpg"
-      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746282423/Port%C3%A1til_Dell_XPS_13_hcw2sy_3_mqd72r.jpg"
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746244860/Port%C3%A1til_Dell_XPS_13_hcw2sy.jpg",
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746282423/Port%C3%A1til_Dell_XPS_13_hcw2sy_3_mqd72r.jpg",
       "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746282423/Port%C3%A1til_Dell_XPS_13_hcw2sy_2_fgh5gd.jpg"
     ],
     "freeShipping": true,
@@ -38,8 +38,8 @@
       "iOS 16"
     ],
     "images": [
-      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg"
-      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746282764/iPhone_14_Pro_3_o5ohm2.jpg"
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245172/iPhone_14_Pro_vuemi8.jpg",
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746282764/iPhone_14_Pro_3_o5ohm2.jpg",
       "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746282765/iPhone_14_Pro_2_tfcdkm.jpg"
     ],
     "freeShipping": false,
@@ -63,8 +63,8 @@
       "Android 13 con One UI 5.1"
     ],
     "images": [
-      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245311/Samsung_galaxy_S23_papvxz.jpg"
-      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746283055/Samsung_galaxy_S23_3_uguzoe.jpg"
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746245311/Samsung_galaxy_S23_papvxz.jpg",
+      "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746283055/Samsung_galaxy_S23_3_uguzoe.jpg",
       "https://res.cloudinary.com/dgvuvw3vn/image/upload/v1746283055/Samsung_galaxy_S23_2_x5naxv.jpg"
     ],
     "freeShipping": false,
