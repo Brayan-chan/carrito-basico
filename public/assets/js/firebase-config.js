@@ -24,4 +24,5 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// Exportar la configuración de Firebase
 export { app, auth, db };
