@@ -47,7 +47,7 @@
             </div>
 
             <!-- Iconos de navegación -->
-            <div class="order-2 md:order-3 flex items-center">
+            <div class="order-2 md:order-3 flex items-center" id="auth-links">
                 <div class="hidden md:flex items-center mr-4">
                     <i class="fas fa-map-marker-alt text-dark mr-1"></i>
                     <span class="text-sm text-dark">Enviar a</span>
@@ -62,7 +62,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span class="hidden md:inline ml-1 text-sm">Carrito</span>
                     <span
-                        class="absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
+                        class="cart-counter absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
                 </a>
 
                 <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="hidden md:block">
-                    <a href="#"
+                    <a href="/views/login.html"
                         class="inline-block bg-primary text-white font-medium px-6 py-2 rounded-md hover:bg-gray-100 hover:text-primary transition">
                         Login
                     </a>
