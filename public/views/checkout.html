@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - ShopZone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#FFE600',
+                        accent: '#3483FA',
+                        dark: '#333333',
+                        light: '#EEEEEE'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Banner Superior -->
+    <div class="bg-primary text-white text-center py-1 text-xs md:text-sm">
+        <p>¡Envío gratis en pedidos mayores a $500! Usa el código: ENVIOGRATIS</p>
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-secondary py-3 px-4 md:px-6 shadow-md">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="/" class="flex items-center">
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-dark">ShopZone</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-center mb-6">Finalizar Compra</h1>
+            
+            <!-- Alerta de error (oculta por defecto) -->
+            <div id="error-alert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong class="font-bold">Error: </strong>
+                <span id="error-message" class="block sm:inline"></span>
+                <button id="close-alert" class="absolute top-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <title>Cerrar</title>
+                        <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Dirección de envío -->
+            <div class="border-b pb-4 mb-4">
+                <h2 class="text-lg font-semibold mb-3">Dirección de Envío</h2>
+                <div id="shipping-address" class="bg-gray-50 p-4 rounded-md">
+                    <!-- La dirección se cargará dinámicamente aquí -->
+                    <p class="text-gray-500">Cargando dirección...</p>
+                </div>
+                <div class="mt-2 text-right">
+                    <a href="/views/profile.html?section=addresses" class="text-primary hover:underline text-sm">Cambiar dirección</a>
+                </div>
+            </div>
+            
+            <!-- Resumen del pedido -->
+            <div class="border-b pb-4 mb-4">
+                <h2 class="text-lg font-semibold mb-3">Resumen del Pedido</h2>
+                <div id="order-items">
+                    <!-- Los items del pedido se cargarán dinámicamente aquí -->
+                    <div class="text-center py-4">
+                        <p class="text-gray-500">Cargando productos...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Información de entrega -->
+            <div class="border-b pb-4 mb-4">
+                <h2 class="text-lg font-semibold mb-3">Información de Entrega</h2>
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-truck text-primary mr-2"></i>
+                    <span>Envío estándar</span>
+                    <span class="ml-auto text-green-600">Gratis</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-calendar-alt text-primary mr-2"></i>
+                    <span>Fecha estimada de entrega:</span>
+                    <span class="ml-auto font-medium" id="delivery-date">Calculando...</span>
+                </div>
+            </div>
+            
+            <!-- Resumen de costos -->
+            <div class="border-b pb-4 mb-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span>Envío</span>
+                    <span id="checkout-shipping" class="text-green-600">Gratis</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total</span>
+                    <span id="checkout-total">$0.00</span>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button id="checkout-btn" class="bg-primary text-white py-3 px-6 rounded-md hover:bg-primary/90 transition w-full md:w-auto">
+                    Proceder al pago
+                </button>
+                <p class="mt-4 text-sm text-gray-500">Al hacer clic en "Proceder al pago", serás redirigido a Mercado Pago para completar tu compra de forma segura.</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-600">
+            <p>© 2025 ShopZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth-service.js"></script>
+    <script type="module" src="/assets/js/cart-service.js"></script>
+    <script type="module">
+        import { loadCartData, formatCurrency, processPayment, initCheckout } from '/assets/js/checkout.js';
+        import CartService from '/assets/js/cart-service.js';
+        import AuthService from '/assets/js/auth-service.js';
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Verificar autenticación y dirección antes de proceder
+            const canProceed = await initCheckout();
+            
+            if (!canProceed) {
+                // Si no puede proceder, la función initCheckout ya habrá redirigido al usuario
+                return;
+            }
+            
+            // Cerrar alerta de error
+            document.getElementById('close-alert').addEventListener('click', () => {
+                document.getElementById('error-alert').classList.add('hidden');
+            });
+            
+            // Cargar datos del carrito
+            await loadCartData();
+            
+            // Cargar dirección de envío
+            await loadShippingAddress();
+            
+            // Calcular fecha de entrega estimada (5 días hábiles desde hoy)
+            const deliveryDate = calculateDeliveryDate(5);
+            document.getElementById('delivery-date').textContent = deliveryDate;
+            
+            // Actualizar subtotal
+            document.getElementById('checkout-subtotal').textContent = formatCurrency(CartService.getCartTotal());
+            document.getElementById('checkout-total').textContent = formatCurrency(CartService.getCartTotal());
+            
+            // Manejar botón de checkout
+            document.getElementById('checkout-btn').addEventListener('click', async () => {
+                try {
+                    // Mostrar indicador de carga
+                    const checkoutBtn = document.getElementById('checkout-btn');
+                    checkoutBtn.textContent = 'Procesando...';
+                    checkoutBtn.disabled = true;
+                    
+                    // Ocultar alerta de error si estaba visible
+                    document.getElementById('error-alert').classList.add('hidden');
+                    
+                    // Preparar datos del pedido
+                    const orderData = {
+                        items: CartService.getCart().map(item => ({
+                            title: item.nombre,
+                            unit_price: item.precio,
+                            quantity: item.cantidad
+                        })),
+                        userId: AuthService.currentUser.uid
+                    };
+                    
+                    // Procesar pago
+                    const result = await processPayment(orderData);
+                    
+                    if (!result.success) {
+                        // Mostrar error
+                        document.getElementById('error-message').textContent = result.error + (result.details ? ': ' + result.details : '');
+                        document.getElementById('error-alert').classList.remove('hidden');
+                        
+                        // Restaurar botón
+                        checkoutBtn.textContent = 'Proceder al pago';
+                        checkoutBtn.disabled = false;
+                    }
+                    // Si es exitoso, processPayment ya habrá redirigido al usuario
+                    
+                } catch (error) {
+                    console.error('Error al procesar el pago:', error);
+                    
+                    // Mostrar error
+                    document.getElementById('error-message').textContent = 'Error al procesar el pago. Por favor, intenta de nuevo.';
+                    document.getElementById('error-alert').classList.remove('hidden');
+                    
+                    // Restaurar botón
+                    document.getElementById('checkout-btn').textContent = 'Proceder al pago';
+                    document.getElementById('checkout-btn').disabled = false;
+                }
+            });
+        });
+        
+        // Función para cargar la dirección de envío
+        async function loadShippingAddress() {
+            try {
+                const { doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+                const { db } = await import("/assets/js/firebase-config.js");
+                
+                const userDoc = await getDoc(doc(db, "usuarios", AuthService.currentUser.uid));
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    const direcciones = userData.direcciones || [];
+                    const direccionPrincipal = userData.direccionPrincipal;
+                    
+                    // Buscar la dirección principal o usar la primera disponible
+                    let direccion = direcciones.find(dir => dir.id === direccionPrincipal) || direcciones[0];
+                    
+                    if (direccion) {
+                        document.getElementById('shipping-address').innerHTML = `
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="font-medium">${direccion.nombre}</p>
+                                    <p>${direccion.destinatario}</p>
+                                    <p>${direccion.calle}</p>
+                                    <p>${direccion.ciudad}, ${direccion.estado} ${direccion.codigoPostal}</p>
+                                    <p>Tel: ${direccion.telefono}</p>
+                                </div>
+                                ${direccion.id === direccionPrincipal ? `
+                                    <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded h-fit">Principal</span>
+                                ` : ''}
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById('shipping-address').innerHTML = `
+                            <p class="text-gray-500">No tienes direcciones guardadas</p>
+                            <a href="/views/profile.html?section=addresses&redirect=checkout" class="text-primary hover:underline">Agregar dirección</a>
+                        `;
+                    }
+                }
+            } catch (error) {
+                console.error("Error al cargar dirección de envío:", error);
+                document.getElementById('shipping-address').innerHTML = `
+                    <p class="text-red-500">Error al cargar la dirección de envío</p>
+                    <a href="/views/profile.html?section=addresses" class="text-primary hover:underline">Gestionar direcciones</a>
+                `;
+            }
+        }
+        
+        // Función para calcular fecha de entrega estimada
+        function calculateDeliveryDate(businessDays) {
+            const date = new Date();
+            let daysAdded = 0;
+            
+            while (daysAdded < businessDays) {
+                date.setDate(date.getDate() + 1);
+                // Saltar fines de semana (0 = domingo, 6 = sábado)
+                if (date.getDay() !== 0 && date.getDay() !== 6) {
+                    daysAdded++;
+                }
+            }
+            
+            // Formatear fecha
+            return date.toLocaleDateString('es-ES', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long'
+            });
+        }
+    </script>
+</body>
+</html>
