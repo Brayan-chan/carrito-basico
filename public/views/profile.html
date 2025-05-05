@@ -707,6 +707,170 @@
                         addressFormContainer.classList.add('hidden');
                     });
 
+                    // Función para editar una dirección
+                    function editAddress(addressId) {
+                        console.log(`Editando dirección con ID: ${addressId}`);
+
+                        // Obtener el contenedor del formulario y el formulario
+                        const addressFormContainer = document.getElementById('address-form-container');
+                        const addressForm = document.getElementById('address-form');
+
+                        // Mostrar el formulario de edición
+                        addressFormContainer.classList.remove('hidden');
+
+                        // Obtener los datos de la dirección desde Firestore
+                        const userRef = doc(db, "usuarios", AuthService.currentUser.uid);
+                        getDoc(userRef).then((userDoc) => {
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+                                const address = userData.direcciones.find((dir) => dir.id === addressId);
+
+                                if (address) {
+                                    // Cargar los datos de la dirección en el formulario
+                                    document.getElementById('address-id').value = address.id;
+                                    document.getElementById('address-name').value = address.nombre;
+                                    document.getElementById('address-recipient').value = address.destinatario;
+                                    document.getElementById('address-street').value = address.calle;
+                                    document.getElementById('address-city').value = address.ciudad;
+                                    document.getElementById('address-state').value = address.estado;
+                                    document.getElementById('address-zip').value = address.codigoPostal;
+                                    document.getElementById('address-phone').value = address.telefono;
+                                    document.getElementById('address-default').checked = userData.direccionPrincipal === address.id;
+                                } else {
+                                    console.error("Dirección no encontrada");
+                                }
+                            } else {
+                                console.error("Documento del usuario no encontrado");
+                            }
+                        }).catch((error) => {
+                            console.error("Error al obtener los datos del usuario:", error);
+                        });
+
+                        // Cambiar el título del formulario a "Editar dirección"
+                        addressFormContainer.querySelector('h3').textContent = 'Editar dirección';
+                    }
+
+                    async function deleteAddress(addressId) {
+                        try {
+                            const userRef = doc(db, "usuarios", AuthService.currentUser.uid);
+                            const userDoc = await getDoc(userRef);
+                    
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+                                let direcciones = userData.direcciones || [];
+                    
+                                // Filtrar la dirección a eliminar
+                                direcciones = direcciones.filter(dir => dir.id !== addressId);
+                    
+                                // Actualizar Firestore
+                                await updateDoc(userRef, {
+                                    direcciones: direcciones
+                                });
+                    
+                                // Si la dirección eliminada era la principal, eliminarla como principal
+                                if (userData.direccionPrincipal === addressId) {
+                                    await updateDoc(userRef, {
+                                        direccionPrincipal: null
+                                    });
+                                }
+                    
+                                // Mostrar mensaje de éxito
+                                alert("Dirección eliminada correctamente.");
+                    
+                                // Recargar las direcciones
+                                await loadAddresses();
+                            } else {
+                                console.error("Documento del usuario no encontrado.");
+                            }
+                        } catch (error) {
+                            console.error("Error al eliminar la dirección:", error);
+                            alert("Hubo un error al eliminar la dirección. Por favor, intenta de nuevo.");
+                        }
+                    }
+
+                    async function setDefaultAddress(addressId) {
+                        try {
+                            const userRef = doc(db, "usuarios", AuthService.currentUser.uid);
+                    
+                            // Actualizar la dirección principal en Firestore
+                            await updateDoc(userRef, {
+                                direccionPrincipal: addressId
+                            });
+                    
+                            // Mostrar mensaje de éxito
+                            alert("Dirección principal actualizada correctamente.");
+                    
+                            // Recargar las direcciones
+                            await loadAddresses();
+                        } catch (error) {
+                            console.error("Error al establecer la dirección principal:", error);
+                            alert("Hubo un error al establecer la dirección principal. Por favor, intenta de nuevo.");
+                        }
+                    }
+
+                    async function loadAddresses() {
+                        const container = document.getElementById('addresses-container');
+                        container.innerHTML = ''; // Limpiar contenido previo
+                    
+                        try {
+                            // Obtener el documento del usuario desde Firestore
+                            const userRef = doc(db, "usuarios", AuthService.currentUser.uid);
+                            const userDoc = await getDoc(userRef);
+                    
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+                                const addresses = userData.direcciones || [];
+                    
+                                if (addresses.length === 0) {
+                                    container.innerHTML = `
+                                        <div class="text-center text-gray-500 py-8">
+                                            No tienes direcciones guardadas.
+                                        </div>
+                                    `;
+                                    return;
+                                }
+                    
+                                // Generar dinámicamente las direcciones
+                                addresses.forEach(address => {
+                                    const addressElement = document.createElement('div');
+                                    addressElement.className = 'bg-gray-50 p-4 rounded-lg shadow-sm flex justify-between items-center';
+                                    addressElement.innerHTML = `
+                                        <div>
+                                            <p class="font-medium text-gray-800">${address.nombre}</p>
+                                            <p class="text-sm text-gray-600">${address.calle}, ${address.ciudad}, ${address.estado}, ${address.codigoPostal}</p>
+                                            <p class="text-sm text-gray-600">Teléfono: ${address.telefono}</p>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <button onclick="editAddress('${address.id}')" class="text-primary hover:underline">
+                                                Editar
+                                            </button>
+                                            <button onclick="deleteAddress('${address.id}')" class="text-red-500 hover:underline">
+                                                Eliminar
+                                            </button>
+                                            <button onclick="setDefaultAddress('${address.id}')" class="text-green-500 hover:underline">
+                                                Establecer como principal
+                                            </button>
+                                        </div>
+                                    `;
+                                    container.appendChild(addressElement);
+                                });
+                            } else {
+                                container.innerHTML = `
+                                    <div class="text-center text-gray-500 py-8">
+                                        No se encontraron datos del usuario.
+                                    </div>
+                                `;
+                            }
+                        } catch (error) {
+                            console.error("Error al cargar direcciones:", error);
+                            container.innerHTML = `
+                                <div class="text-center text-red-500 py-8">
+                                    Error al cargar las direcciones. Por favor, intenta de nuevo.
+                                </div>
+                            `;
+                        }
+                    }
+
                     addressForm.addEventListener('submit', async (e) => {
                         e.preventDefault();
 
