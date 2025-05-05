@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - ShopZone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#FFE600',
+                        accent: '#3483FA',
+                        dark: '#333333',
+                        light: '#EEEEEE'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <!-- Banner Superior -->
+    <div class="bg-primary text-white text-center py-1 text-xs md:text-sm">
+        <p>¡Envío gratis en pedidos mayores a $500! Usa el código: ENVIOGRATIS</p>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-secondary py-3 px-4 md:px-6 shadow-md">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="/" class="flex items-center">
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-dark">ShopZone</span>
+                </a>
+            </div>
+
+            <!-- Barra de busqueda -->
+            <div
+                class="order-3 md:order-2 w-full md:w-auto mt-3 md:mt-0 flex justify-center md:flex-grow md:mx-6 lg:mx-12">
+                <div class="relative w-full max-w-xl">
+                    <input type="text" placeholder="Buscar productos, marcas y más..."
+                        class="w-full pl-4 pr-10 py-2 text-base rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button
+                        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Iconos de navegación -->
+            <div class="order-2 md:order-3 flex items-center" id="auth-links">
+                <!-- Se llenará dinámicamente con auth-ui.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center py-2">
+                <div class="mr-6 lg:hidden">
+                    <button class="text-gray-600 dark:text-gray-200 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="hidden lg:flex lg:flex-grow">
+                    <ul class="flex flex-wrap">
+                        <li class="mr-6">
+                            <a href="/" class="text-dark dark:text-gray-200 hover:text-primary font-medium">Inicio</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#"
+                                class="text-dark dark:text-gray-200 hover:text-primary font-medium">Categorías</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Ofertas</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Historial</a>
+                        </li>
+                        <li class="mr-6">
+                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Ayuda</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h1 class="text-2xl font-bold mb-6">Mi Perfil</h1>
+
+            <!-- Alerta de error (oculta por defecto) -->
+            <div id="error-alert"
+                class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                role="alert">
+                <span id="error-message" class="block sm:inline"></span>
+                <button id="close-alert" class="absolute top-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <title>Cerrar</title>
+                        <path
+                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Alerta de éxito (oculta por defecto) -->
+            <div id="success-alert"
+                class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+                role="alert">
+                <span id="success-message" class="block sm:inline"></span>
+                <button id="close-success" class="absolute top-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <title>Cerrar</title>
+                        <path
+                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="loading-indicator" class="text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+                <p class="mt-2 text-gray-600">Cargando información del perfil...</p>
+            </div>
+
+            <div id="profile-content" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Menú lateral -->
+                <div class="md:col-span-1">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl font-bold mr-4">
+                                <span id="user-initials">US</span>
+                            </div>
+                            <div>
+                                <h2 id="user-name" class="font-medium">Usuario</h2>
+                                <p id="user-email" class="text-sm text-gray-500">usuario@ejemplo.com</p>
+                            </div>
+                        </div>
+
+                        <nav class="space-y-1">
+                            <a href="#profile" id="nav-profile"
+                                class="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-primary text-white">
+                                <i class="fas fa-user-circle mr-3"></i>
+                                Información personal
+                            </a>
+                            <a href="#addresses" id="nav-addresses"
+                                class="flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100 hover:text-primary">
+                                <i class="fas fa-map-marker-alt mr-3"></i>
+                                Direcciones
+                            </a>
+                            <a href="#orders" id="nav-orders"
+                                class="flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100 hover:text-primary">
+                                <i class="fas fa-box mr-3"></i>
+                                Mis pedidos
+                            </a>
+                            <a href="#payment" id="nav-payment"
+                                class="flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100 hover:text-primary">
+                                <i class="fas fa-credit-card mr-3"></i>
+                                Métodos de pago
+                            </a>
+                            <a href="#security" id="nav-security"
+                                class="flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100 hover:text-primary">
+                                <i class="fas fa-lock mr-3"></i>
+                                Seguridad
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Contenido principal -->
+                <div class="md:col-span-2">
+                    <!-- Sección de información personal -->
+                    <section id="profile-section" class="bg-white rounded-lg p-6 mb-6">
+                        <h2 class="text-lg font-medium mb-4">Información personal</h2>
+
+                        <form id="profile-form" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="profile-name"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+                                    <input type="text" id="profile-name" name="profile-name" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+
+                                <div>
+                                    <label for="profile-email"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
+                                    <input type="email" id="profile-email" name="profile-email" disabled
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-50 text-gray-500">
+                                </div>
+
+                                <div>
+                                    <label for="profile-phone"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                                    <input type="tel" id="profile-phone" name="profile-phone"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+
+                                <div>
+                                    <label for="profile-birthdate"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Fecha de nacimiento</label>
+                                    <input type="date" id="profile-birthdate" name="profile-birthdate"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="submit" id="save-profile-button"
+                                    class="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition">
+                                    Guardar cambios
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Sección de direcciones -->
+                    <section id="addresses-section" class="bg-white rounded-lg p-6 mb-6 hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-medium">Mis direcciones</h2>
+                            <button id="add-address-button" class="text-primary hover:underline flex items-center">
+                                <i class="fas fa-plus mr-1"></i> Agregar dirección
+                            </button>
+                        </div>
+
+                        <div id="addresses-container" class="space-y-4">
+                            <!-- Las direcciones se cargarán dinámicamente aquí -->
+                            <div class="text-center text-gray-500 py-8">
+                                Cargando direcciones...
+                            </div>
+                        </div>
+
+                        <!-- Formulario para agregar/editar dirección (oculto por defecto) -->
+                        <div id="address-form-container" class="hidden mt-6 border-t pt-6">
+                            <h3 class="text-lg font-medium mb-4">Agregar dirección</h3>
+
+                            <form id="address-form" class="space-y-4">
+                                <input type="hidden" id="address-id" name="address-id">
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="address-name"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Nombre de la
+                                            dirección</label>
+                                        <input type="text" id="address-name" name="address-name"
+                                            placeholder="Ej: Casa, Trabajo" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+
+                                    <div>
+                                        <label for="address-recipient"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Nombre del
+                                            destinatario</label>
+                                        <input type="text" id="address-recipient" name="address-recipient" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+
+                                    <div class="md:col-span-2">
+                                        <label for="address-street"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Calle y número</label>
+                                        <input type="text" id="address-street" name="address-street" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+
+                                    <div>
+                                        <label for="address-city"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Ciudad</label>
+                                        <input type="text" id="address-city" name="address-city" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+
+                                    <div>
+                                        <label for="address-state"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                                        <input type="text" id="address-state" name="address-state" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+
+                                    <div>
+                                        <label for="address-zip"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Código postal</label>
+                                        <input type="text" id="address-zip" name="address-zip" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+
+                                    <div>
+                                        <label for="address-phone"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Teléfono de
+                                            contacto</label>
+                                        <input type="tel" id="address-phone" name="address-phone" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="address-default" name="address-default"
+                                        class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                    <label for="address-default" class="ml-2 block text-sm text-gray-700">
+                                        Establecer como dirección principal
+                                    </label>
+                                </div>
+
+                                <div class="flex justify-end space-x-3">
+                                    <button type="button" id="cancel-address-button"
+                                        class="bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 transition">
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" id="save-address-button"
+                                        class="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition">
+                                        Guardar dirección
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Sección de pedidos -->
+                    <section id="orders-section" class="bg-white rounded-lg p-6 mb-6 hidden">
+                        <h2 class="text-lg font-medium mb-4">Mis pedidos</h2>
+
+                        <div id="orders-container">
+                            <!-- Los pedidos se cargarán dinámicamente aquí -->
+                            <div class="text-center text-gray-500 py-8">
+                                Cargando pedidos...
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Sección de métodos de pago -->
+                    <section id="payment-section" class="bg-white rounded-lg p-6 mb-6 hidden">
+                        <h2 class="text-lg font-medium mb-4">Métodos de pago</h2>
+
+                        <div class="text-center text-gray-500 py-8">
+                            <p>Actualmente, solo aceptamos pagos a través de Mercado Pago.</p>
+                            <p class="mt-2">Puedes agregar tus tarjetas y otros métodos de pago directamente en Mercado
+                                Pago durante el proceso de checkout.</p>
+                        </div>
+                    </section>
+
+                    <!-- Sección de seguridad -->
+                    <section id="security-section" class="bg-white rounded-lg p-6 mb-6 hidden">
+                        <h2 class="text-lg font-medium mb-4">Seguridad</h2>
+
+                        <form id="security-form" class="space-y-4">
+                            <div>
+                                <label for="current-password"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Contraseña actual</label>
+                                <input type="password" id="current-password" name="current-password" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            </div>
+
+                            <div>
+                                <label for="new-password" class="block text-sm font-medium text-gray-700 mb-1">Nueva
+                                    contraseña</label>
+                                <input type="password" id="new-password" name="new-password" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <p class="mt-1 text-xs text-gray-500">La contraseña debe tener al menos 6 caracteres</p>
+                            </div>
+
+                            <div>
+                                <label for="confirm-password"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Confirmar nueva
+                                    contraseña</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="submit" id="save-password-button"
+                                    class="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition">
+                                    Cambiar contraseña
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="mt-8 pt-6 border-t">
+                            <h3 class="text-lg font-medium mb-4 text-red-600">Zona de peligro</h3>
+
+                            <button id="delete-account-button"
+                                class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition">
+                                Eliminar mi cuenta
+                            </button>
+                            <p class="mt-2 text-xs text-gray-500">Esta acción no se puede deshacer. Se eliminarán
+                                permanentemente todos tus datos.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-600">
+            <p>© 2025 ShopZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de confirmación para eliminar cuenta -->
+    <div id="delete-account-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <h3 class="text-lg font-bold mb-4">¿Estás seguro?</h3>
+            <p class="mb-6 text-gray-600">Esta acción eliminará permanentemente tu cuenta y todos tus datos. No podrás
+                recuperarlos.</p>
+
+            <div class="flex justify-end space-x-3">
+                <button id="cancel-delete-account"
+                    class="bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 transition">
+                    Cancelar
+                </button>
+                <button id="confirm-delete-account"
+                    class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition">
+                    Eliminar cuenta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth-service.js"></script>
+    <script type="module" src="/assets/js/cart-service.js"></script>
+    <script type="module" src="/assets/js/auth-ui.js"></script>
+    <script type="module">
+        import {
+            doc,
+            getDoc,
+            updateDoc,
+            arrayUnion,
+            arrayRemove,
+            collection,
+            query,
+            where,
+            orderBy,
+            getDocs,
+            deleteDoc
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        import {
+            EmailAuthProvider,
+            reauthenticateWithCredential,
+            updatePassword,
+            deleteUser,
+            updateProfile
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        import { db, auth } from "/assets/js/firebase-config.js";
+        import AuthService from "/assets/js/auth-service.js";
+        import { updateAuthUI } from "/assets/js/auth-ui.js";
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Página de perfil cargada");
+
+            // Mostrar indicador de carga
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const profileContent = document.getElementById('profile-content');
+
+            // Verificar autenticación con un pequeño retraso para dar tiempo a Firebase
+            setTimeout(async function () {
+                try {
+                    console.log("Verificando autenticación:", AuthService.isAuthenticated());
+
+                    // Esperar a que la autenticación esté inicializada
+                    //await AuthService.waitForAuth();
+
+                    // Verificar si el usuario está autenticado
+                    if (!AuthService.isAuthenticated()) {
+                        console.log("Usuario no autenticado, redirigiendo a login");
+                        // Guardar la URL actual para redirigir después del login
+                        sessionStorage.setItem("redirectAfterLogin", window.location.href);
+
+                        // Redirigir al usuario a la página de login
+                        window.location.href = "/views/login.html";
+                        return;
+                    }
+
+                    console.log("Usuario autenticado, cargando perfil");
+
+                    // Función para cargar los datos del usuario
+                    async function loadUserData() {
+                        try {
+                            console.log("Cargando datos del usuario:", AuthService.currentUser.uid);
+
+                            // Obtener datos del usuario desde Firestore
+                            const userDoc = await getDoc(doc(db, "usuarios", AuthService.currentUser.uid));
+
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+
+                                // Actualizar campos del formulario
+                                document.getElementById('profile-name').value = userData.nombre || AuthService.currentUser.displayName || '';
+                                document.getElementById('profile-email').value = userData.email || AuthService.currentUser.email || '';
+                                document.getElementById('profile-phone').value = userData.telefono || '';
+                                document.getElementById('profile-birthdate').value = userData.fechaNacimiento || '';
+
+                                // Actualizar nombre e iniciales en la UI
+                                document.getElementById('user-name').textContent = userData.nombre || AuthService.currentUser.displayName || 'Usuario';
+                                document.getElementById('user-initials').textContent = getInitials(userData.nombre || AuthService.currentUser.displayName || 'Usuario');
+                                document.getElementById('user-email').textContent = userData.email || AuthService.currentUser.email || '';
+                            } else {
+                                console.log("No se encontró el documento del usuario, usando datos de Auth");
+
+                                // Si no hay documento en Firestore, usar datos de Auth
+                                document.getElementById('profile-name').value = AuthService.currentUser.displayName || '';
+                                document.getElementById('profile-email').value = AuthService.currentUser.email || '';
+
+                                // Actualizar nombre e iniciales en la UI
+                                document.getElementById('user-name').textContent = AuthService.currentUser.displayName || 'Usuario';
+                                document.getElementById('user-initials').textContent = getInitials(AuthService.currentUser.displayName || 'Usuario');
+                                document.getElementById('user-email').textContent = AuthService.currentUser.email || '';
+                            }
+                        } catch (error) {
+                            console.error("Error al cargar datos del usuario:", error);
+
+                            // En caso de error, mostrar datos básicos de Auth
+                            document.getElementById('profile-name').value = AuthService.currentUser.displayName || '';
+                            document.getElementById('profile-email').value = AuthService.currentUser.email || '';
+
+                            // Actualizar nombre e iniciales en la UI
+                            document.getElementById('user-name').textContent = AuthService.currentUser.displayName || 'Usuario';
+                            document.getElementById('user-initials').textContent = getInitials(AuthService.currentUser.displayName || 'Usuario');
+                            document.getElementById('user-email').textContent = AuthService.currentUser.email || '';
+                        }
+                    }
+
+                    // Función para obtener iniciales del nombre
+                    function getInitials(name) {
+                        if (!name) return 'U';
+
+                        const parts = name.split(' ');
+                        if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+
+                        return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+                    }
+
+                    // Ocultar indicador de carga y mostrar contenido
+                    loadingIndicator.classList.add('hidden');
+                    profileContent.classList.remove('hidden');
+
+                    // Referencias a elementos del DOM
+                    const errorAlert = document.getElementById('error-alert');
+                    const errorMessage = document.getElementById('error-message');
+                    const successAlert = document.getElementById('success-alert');
+                    const successMessage = document.getElementById('success-message');
+
+                    // Cerrar alertas
+                    document.getElementById('close-alert').addEventListener('click', () => {
+                        errorAlert.classList.add('hidden');
+                    });
+
+                    document.getElementById('close-success').addEventListener('click', () => {
+                        successAlert.classList.add('hidden');
+                    });
+
+                    // Cargar datos del usuario
+                    await loadUserData();
+
+                    // Manejar navegación entre secciones
+                    const navLinks = {
+                        profile: document.getElementById('nav-profile'),
+                        addresses: document.getElementById('nav-addresses'),
+                        orders: document.getElementById('nav-orders'),
+                        payment: document.getElementById('nav-payment'),
+                        security: document.getElementById('nav-security')
+                    };
+
+                    const sections = {
+                        profile: document.getElementById('profile-section'),
+                        addresses: document.getElementById('addresses-section'),
+                        orders: document.getElementById('orders-section'),
+                        payment: document.getElementById('payment-section'),
+                        security: document.getElementById('security-section')
+                    };
+
+                    // Verificar si hay un parámetro de sección en la URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const sectionParam = urlParams.get('section');
+
+                    // Función para cambiar de sección
+                    function changeSection(sectionId) {
+                        // Actualizar estado activo de los enlaces
+                        Object.values(navLinks).forEach(link => {
+                            link.classList.remove('bg-primary', 'text-white');
+                            link.classList.add('text-gray-700', 'hover:bg-gray-100', 'hover:text-primary');
+                        });
+
+                        navLinks[sectionId].classList.remove('text-gray-700', 'hover:bg-gray-100', 'hover:text-primary');
+                        navLinks[sectionId].classList.add('bg-primary', 'text-white');
+
+                        // Mostrar la sección correspondiente
+                        Object.values(sections).forEach(section => {
+                            section.classList.add('hidden');
+                        });
+
+                        sections[sectionId].classList.remove('hidden');
+
+                        // Si es la sección de direcciones, cargar las direcciones
+                        if (sectionId === 'addresses') {
+                            loadAddresses();
+                        }
+
+                        // Si es la sección de pedidos, cargar los pedidos
+                        if (sectionId === 'orders') {
+                            loadOrders();
+                        }
+                    }
+
+                    // Configurar eventos de navegación
+                    Object.entries(navLinks).forEach(([sectionId, link]) => {
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            changeSection(sectionId);
+                        });
+                    });
+
+                    // Cambiar a la sección indicada en la URL o a la sección de perfil por defecto
+                    if (sectionParam && sections[sectionParam]) {
+                        changeSection(sectionParam);
+                    } else {
+                        changeSection('profile');
+                    }
+
+                    // Manejar formulario de perfil
+                    const profileForm = document.getElementById('profile-form');
+                    profileForm.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        const saveButton = document.getElementById('save-profile-button');
+                        saveButton.textContent = 'Guardando...';
+                        saveButton.disabled = true;
+
+                        try {
+                            const name = document.getElementById('profile-name').value;
+                            const phone = document.getElementById('profile-phone').value;
+                            const birthdate = document.getElementById('profile-birthdate').value;
+
+                            // Actualizar en Firestore
+                            await updateDoc(doc(db, "usuarios", AuthService.currentUser.uid), {
+                                nombre: name,
+                                telefono: phone || null,
+                                fechaNacimiento: birthdate || null
+                            });
+
+                            // Mostrar mensaje de éxito
+                            successMessage.textContent = 'Información actualizada correctamente';
+                            successAlert.classList.remove('hidden');
+
+                            // Actualizar datos en la UI
+                            document.getElementById('user-name').textContent = name;
+                            document.getElementById('user-initials').textContent = getInitials(name);
+
+                            // Actualizar nombre en Firebase Auth
+                            await updateProfile(AuthService.currentUser, {
+                                displayName: name
+                            });
+
+                            // Actualizar UI de autenticación
+                            updateAuthUI();
+
+                        } catch (error) {
+                            console.error("Error al actualizar perfil:", error);
+                            errorMessage.textContent = error.message || 'Error al actualizar la información';
+                            errorAlert.classList.remove('hidden');
+                        } finally {
+                            saveButton.textContent = 'Guardar cambios';
+                            saveButton.disabled = false;
+                        }
+                    });
+
+                    // Manejar direcciones
+                    const addAddressButton = document.getElementById('add-address-button');
+                    const addressFormContainer = document.getElementById('address-form-container');
+                    const cancelAddressButton = document.getElementById('cancel-address-button');
+                    const addressForm = document.getElementById('address-form');
+
+                    addAddressButton.addEventListener('click', () => {
+                        // Limpiar formulario
+                        addressForm.reset();
+                        document.getElementById('address-id').value = '';
+
+                        // Cambiar título del formulario
+                        addressFormContainer.querySelector('h3').textContent = 'Agregar dirección';
+
+                        // Mostrar formulario
+                        addressFormContainer.classList.remove('hidden');
+                    });
+
+                    cancelAddressButton.addEventListener('click', () => {
+                        addressFormContainer.classList.add('hidden');
+                    });
+
+                    addressForm.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        const saveButton = document.getElementById('save-address-button');
+                        saveButton.textContent = 'Guardando...';
+                        saveButton.disabled = true;
+
+                        try {
+                            const addressId = document.getElementById('address-id').value;
+                            const isDefault = document.getElementById('address-default').checked;
+
+                            const addressData = {
+                                id: addressId || `address_${Date.now()}`,
+                                nombre: document.getElementById('address-name').value,
+                                destinatario: document.getElementById('address-recipient').value,
+                                calle: document.getElementById('address-street').value,
+                                ciudad: document.getElementById('address-city').value,
+                                estado: document.getElementById('address-state').value,
+                                codigoPostal: document.getElementById('address-zip').value,
+                                telefono: document.getElementById('address-phone').value
+                            };
+
+                            const userRef = doc(db, "usuarios", AuthService.currentUser.uid);
+                            const userDoc = await getDoc(userRef);
+
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+                                let direcciones = userData.direcciones || [];
+
+                                if (addressId) {
+                                    // Actualizar dirección existente
+                                    direcciones = direcciones.map(dir =>
+                                        dir.id === addressId ? addressData : dir
+                                    );
+                                } else {
+                                    // Agregar nueva dirección
+                                    direcciones.push(addressData);
+                                }
+
+                                // Actualizar dirección principal si es necesario
+                                if (isDefault) {
+                                    await updateDoc(userRef, {
+                                        direccionPrincipal: addressData.id,
+                                        direcciones: direcciones
+                                    });
+                                } else {
+                                    await updateDoc(userRef, {
+                                        direcciones: direcciones
+                                    });
+                                }
+
+                                // Mostrar mensaje de éxito
+                                successMessage.textContent = addressId ? 'Dirección actualizada correctamente' : 'Dirección agregada correctamente';
+                                successAlert.classList.remove('hidden');
+
+                                // Ocultar formulario y recargar direcciones
+                                addressFormContainer.classList.add('hidden');
+                                await loadAddresses();
+
+                                // Verificar si hay un parámetro de redirección en la URL
+                                const redirectParam = urlParams.get('redirect');
+                                if (redirectParam === 'checkout') {
+                                    // Redirigir al checkout
+                                    window.location.href = '/views/checkout.html';
+                                }
+                            }
+                        } catch (error) {
+                            console.error("Error al guardar dirección:", error);
+                            errorMessage.textContent = error.message || 'Error al guardar la dirección';
+                            errorAlert.classList.remove('hidden');
+                        } finally {
+                            saveButton.textContent = 'Guardar dirección';
+                            saveButton.disabled = false;
+                        }
+                    });
+
+                    // Manejar cambio de contraseña
+                    const securityForm = document.getElementById('security-form');
+                    securityForm.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        const saveButton = document.getElementById('save-password-button');
+                        saveButton.textContent = 'Guardando...';
+                        saveButton.disabled = true;
+
+                        try {
+                            const currentPassword = document.getElementById('current-password').value;
+                            const newPassword = document.getElementById('new-password').value;
+                            const confirmPassword = document.getElementById('confirm-password').value;
+
+                            // Validar que las contraseñas coincidan
+                            if (newPassword !== confirmPassword) {
+                                throw new Error('Las contraseñas no coinciden');
+                            }
+
+                            // Validar longitud mínima
+                            if (newPassword.length < 6) {
+                                throw new Error('La contraseña debe tener al menos 6 caracteres');
+                            }
+
+                            // Reautenticar al usuario
+                            const credential = EmailAuthProvider.credential(
+                                AuthService.currentUser.email,
+                                currentPassword
+                            );
+
+                            await reauthenticateWithCredential(AuthService.currentUser, credential);
+
+                            // Cambiar contraseña
+                            await updatePassword(AuthService.currentUser, newPassword);
+
+                            // Mostrar mensaje de éxito
+                            successMessage.textContent = 'Contraseña actualizada correctamente';
+                            successAlert.classList.remove('hidden');
+
+                            // Limpiar formulario
+                            securityForm.reset();
+
+                        } catch (error) {
+                            console.error("Error al cambiar contraseña:", error);
+
+                            // Mostrar mensaje de error específico
+                            let errorMsg = 'Error al cambiar la contraseña';
+                            if (error.code === 'auth/wrong-password') {
+                                errorMsg = 'La contraseña actual es incorrecta';
+                            } else if (error.message) {
+                                errorMsg = error.message;
+                            }
+
+                            errorMessage.textContent = errorMsg;
+                            errorAlert.classList.remove('hidden');
+                        } finally {
+                            saveButton.textContent = 'Cambiar contraseña';
+                            saveButton.disabled = false;
+                        }
+                    });
+
+                    // Manejar eliminación de cuenta
+                    const deleteAccountButton = document.getElementById('delete-account-button');
+                    const deleteAccountModal = document.getElementById('delete-account-modal');
+                    const cancelDeleteAccount = document.getElementById('cancel-delete-account');
+                    const confirmDeleteAccount = document.getElementById('confirm-delete-account');
+
+                    deleteAccountButton.addEventListener('click', () => {
+                        deleteAccountModal.classList.remove('hidden');
+                    });
+
+                    cancelDeleteAccount.addEventListener('click', () => {
+                        deleteAccountModal.classList.add('hidden');
+                    });
+
+                    confirmDeleteAccount.addEventListener('click', async () => {
+                        try {
+                            // Eliminar datos del usuario en Firestore
+                            await deleteDoc(doc(db, "usuarios", AuthService.currentUser.uid));
+
+                            // Eliminar cuenta de autenticación
+                            await deleteUser(AuthService.currentUser);
+
+                            // Redirigir a la página principal
+                            window.location.href = '/';
+                        } catch (error) {
+                            console.error("Error al eliminar cuenta:", error);
+
+                            // Ocultar modal
+                            deleteAccountModal.classList.add('hidden');
+
+                            // Mostrar mensaje de error
+                            errorMessage.textContent = 'Error al eliminar la cuenta. Es posible que necesites iniciar sesión nuevamente.';
+                            errorAlert.classList.remove('hidden');
+                        }
+                    });
+
+                    // Exponer funciones para editar/eliminar direcciones al objeto window
+                    window.editAddress = editAddress;
+                    window.deleteAddress = deleteAddress;
+                    window.setDefaultAddress = setDefaultAddress;
+                } catch (error) {
+                    console.error("Error al cargar la página de perfil:", error);
+                    loadingIndicator.innerHTML = `
+                    <div class="text-center text-red-500">
+                        <i class="fas fa-exclamation-triangle text-3xl mb-2"></i>
+                        <p>Error al cargar el perfil. Por favor, intenta de nuevo.</p>
+                        <button id="retry-button" class="mt-4 bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition">
+                            Intentar de nuevo
+                        </button>
+                    </div>
+                `;
+
+                    // Añadir botón para reintentar
+                    document.getElementById('retry-button')?.addEventListener('click', function () {
+                        window.location.reload();
+                    });
+                }
+            }, 1000); // Esperar 1 segundo para dar tiempo a Firebase
+        });
+    </script>
+</body>
+
+</html>
