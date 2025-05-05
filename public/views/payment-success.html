@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso - ShopZone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#FFE600',
+                        accent: '#3483FA',
+                        dark: '#333333',
+                        light: '#EEEEEE'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Banner Superior -->
+    <div class="bg-primary text-white text-center py-1 text-xs md:text-sm">
+        <p>¡Envío gratis en pedidos mayores a $500! Usa el código: ENVIOGRATIS</p>
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-secondary py-3 px-4 md:px-6 shadow-md">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="/" class="flex items-center">
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-dark">ShopZone</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 text-center">
+            <div class="mb-6">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                    <i class="fas fa-check text-green-500 text-4xl"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-2xl font-bold mb-4">¡Pago Exitoso!</h1>
+            <p class="text-gray-600 mb-6">Tu pedido ha sido procesado correctamente. Hemos enviado un correo electrónico con los detalles de tu compra.</p>
+            
+            <div class="bg-gray-50 p-4 rounded-md mb-6 text-left">
+                <h2 class="font-medium mb-2">Resumen del Pedido</h2>
+                <div class="flex justify-between mb-1">
+                    <span class="text-gray-600">Número de pedido:</span>
+                    <span id="order-number" class="font-medium">Cargando...</span>
+                </div>
+                <div class="flex justify-between mb-1">
+                    <span class="text-gray-600">Fecha:</span>
+                    <span id="order-date" class="font-medium">Cargando...</span>
+                </div>
+                <div class="flex justify-between mb-1">
+                    <span class="text-gray-600">Total:</span>
+                    <span id="order-total" class="font-medium">Cargando...</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Estado:</span>
+                    <span class="text-green-600 font-medium">Pagado</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col space-y-3">
+                <a href="/views/orders.html" class="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition">
+                    Ver mis pedidos
+                </a>
+                <a href="/" class="text-primary hover:underline">
+                    Volver a la tienda
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-600">
+            <p>© 2025 ShopZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth-service.js"></script>
+    <script type="module" src="/assets/js/cart-service.js"></script>
+    <script type="module">
+        import CartService from '/assets/js/cart-service.js';
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentId = urlParams.get('payment_id');
+            const status = urlParams.get('status');
+            const orderId = urlParams.get('external_reference');
+            
+            // Mostrar información del pedido
+            document.getElementById('order-number').textContent = orderId || 'N/A';
+            document.getElementById('order-date').textContent = new Date().toLocaleDateString('es-ES');
+            
+            // Obtener total del carrito
+            const total = CartService.getCartTotal();
+            document.getElementById('order-total').textContent = formatCurrency(total);
+            
+            // Si el pago fue exitoso, vaciar el carrito
+            if (status === 'approved') {
+                await CartService.clearCart();
+            }
+            
+            // Función para formatear moneda
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('es-MX', {
+                    style: 'currency',
+                    currency: 'MXN'
+                }).format(amount);
+            }
+        });
+    </script>
+</body>
+</html>
