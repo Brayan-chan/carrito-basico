@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,61 +10,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="../assets/js/tailwind-config.js"></script>
 </head>
+
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen">
     <!-- Banner Superior -->
     <div class="bg-primary text-white text-center py-1 text-xs md:text-sm">
         <p>¡Envío gratis en pedidos mayores a $500! Usa el código: ENVIOGRATIS</p>
     </div>
-    
+
     <!-- Header -->
     <header class="bg-secondary py-3 px-4 md:px-6 shadow-md">
         <div class="container mx-auto flex flex-wrap items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="#" class="flex items-center">
-                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                            clip-rule="evenodd"></path>
                     </svg>
                     <span class="ml-2 text-xl font-bold text-dark">ShopZone</span>
                 </a>
             </div>
-            
+
             <!-- Barra de busqueda -->
-            <div class="order-3 md:order-2 w-full md:w-auto mt-3 md:mt-0 flex justify-center md:flex-grow md:mx-6 lg:mx-12">
+            <div
+                class="order-3 md:order-2 w-full md:w-auto mt-3 md:mt-0 flex justify-center md:flex-grow md:mx-6 lg:mx-12">
                 <div class="relative w-full max-w-xl">
-                    <input type="text" placeholder="Buscar productos, marcas y más..." 
+                    <input type="text" placeholder="Buscar productos, marcas y más..."
                         class="w-full pl-4 pr-10 py-2 text-base rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
-                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
+                    <button
+                        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
-            
+
             <!-- Iconos de navegación -->
             <div class="order-2 md:order-3 flex items-center">
                 <div class="hidden md:flex items-center mr-4">
                     <i class="fas fa-map-marker-alt text-dark mr-1"></i>
                     <span class="text-sm text-dark">Enviar a</span>
                 </div>
-                
+
                 <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
                     <i class="far fa-user"></i>
                     <span class="hidden md:inline ml-1 text-sm">Mi cuenta</span>
                 </a>
-                
+
                 <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary relative">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="hidden md:inline ml-1 text-sm">Carrito</span>
-                    <span class="absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
+                    <span
+                        class="absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
                 </a>
-                
+
                 <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
                     <i class="far fa-bell"></i>
                 </a>
             </div>
         </div>
     </header>
-    
+
     <!-- Menú de navegación -->
     <nav class="bg-white dark:bg-gray-800 shadow-sm">
         <div class="container mx-auto px-4">
@@ -73,11 +81,12 @@
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
-                
+
                 <div class="hidden lg:flex lg:flex-grow">
                     <ul class="flex flex-wrap">
                         <li class="mr-6">
-                            <a href="#" class="text-dark dark:text-gray-200 hover:text-primary font-medium">Categorías</a>
+                            <a href="#"
+                                class="text-dark dark:text-gray-200 hover:text-primary font-medium">Categorías</a>
                         </li>
                         <li class="mr-6">
                             <a href="#" class="text-dark dark:text-gray-200 hover:text-primary">Ofertas</a>
@@ -96,9 +105,10 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="hidden md:block">
-                    <a href="#" class="inline-block bg-primary text-white font-medium px-6 py-2 rounded-md hover:bg-gray-100 hover:text-primary transition">
+                    <a href="#"
+                        class="inline-block bg-primary text-white font-medium px-6 py-2 rounded-md hover:bg-gray-100 hover:text-primary transition">
                         Login
                     </a>
                 </div>
@@ -106,16 +116,18 @@
         </div>
     </nav>
 
-    
+
     <!-- Contenido principal -->
     <main class="container mx-auto px-4 py-6">
         <!-- Sección de ofertas -->
         <section class="mb-8 rounded-lg overflow-hidden relative">
-            <div class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 md:p-8 flex flex-col md:flex-row items-center">
+            <div
+                class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 md:p-8 flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 text-white mb-6 md:mb-0">
                     <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3">Ofertas de Temporada</h1>
                     <p class="mb-4">Hasta 40% de descuento en miles de productos</p>
-                    <a href="#" class="inline-block bg-white text-primary font-medium px-6 py-2 rounded-md hover:bg-gray-100 transition">
+                    <a href="#"
+                        class="inline-block bg-white text-primary font-medium px-6 py-2 rounded-md hover:bg-gray-100 transition">
                         Ver ofertas
                     </a>
                 </div>
@@ -137,73 +149,81 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Sección de categorías -->
         <section class="mb-8">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-gray-800 dark:text-white">Categorías Populares</h2>
                 <a href="#" class="text-primary hover:underline">Ver todas</a>
             </div>
-            
+
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <div class="category-icon electronic bg-primary"></div>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Electrónica</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <div class="category-icon fashion bg-primary"></div>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Moda</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <div class="category-icon home bg-primary"></div>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Hogar</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <i class="fas fa-mobile-alt text-primary text-xl"></i>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Celulares</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <i class="fas fa-tshirt text-primary text-xl"></i>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Ropa</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <i class="fas fa-headphones text-primary text-xl"></i>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Audio</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <i class="fas fa-laptop text-primary text-xl"></i>
                     </div>
                     <span class="text-sm text-center text-gray-700 dark:text-gray-300">Computación</span>
                 </a>
-                
+
                 <!-- Item de categoría -->
-                <a href="#" class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
+                <a href="#"
+                    class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg transition hover:shadow-md">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                         <i class="fas fa-gamepad text-primary text-xl"></i>
                     </div>
@@ -211,25 +231,28 @@
                 </a>
             </div>
         </section>
-        
+
         <!-- Sección de ofertas -->
         <section class="mb-8">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-gray-800 dark:text-white">Ofertas Destacadas</h2>
                 <a href="#" class="text-primary hover:underline">Ver todas</a>
             </div>
-            
+
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 <!-- Carta de producto -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="relative">
                         <div class="h-48 bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-mobile-alt text-5xl text-gray-400"></i>
                         </div>
-                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-25%</div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            -25%</div>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Smartphone XYZ Pro 128GB - Negro</h3>
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Smartphone
+                            XYZ Pro 128GB - Negro</h3>
                         <div class="flex flex-col">
                             <span class="text-xs text-gray-500 line-through">$8,999</span>
                             <span class="text-lg font-bold text-gray-800 dark:text-white">$6,749</span>
@@ -243,17 +266,20 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de producto -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="relative">
                         <div class="h-48 bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-headphones text-5xl text-gray-400"></i>
                         </div>
-                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-30%</div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            -30%</div>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Auriculares Inalámbricos Bluetooth - Blanco</h3>
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Auriculares
+                            Inalámbricos Bluetooth - Blanco</h3>
                         <div class="flex flex-col">
                             <span class="text-xs text-gray-500 line-through">$1,999</span>
                             <span class="text-lg font-bold text-gray-800 dark:text-white">$1,399</span>
@@ -266,17 +292,20 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de producto -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="relative">
                         <div class="h-48 bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-laptop text-5xl text-gray-400"></i>
                         </div>
-                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-15%</div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            -15%</div>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Laptop Ultra Delgada 14" 8GB RAM 256GB SSD</h3>
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Laptop Ultra
+                            Delgada 14" 8GB RAM 256GB SSD</h3>
                         <div class="flex flex-col">
                             <span class="text-xs text-gray-500 line-through">$12,999</span>
                             <span class="text-lg font-bold text-gray-800 dark:text-white">$11,049</span>
@@ -290,17 +319,20 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de producto -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="relative">
                         <div class="h-48 bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-tshirt text-5xl text-gray-400"></i>
                         </div>
-                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-40%</div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            -40%</div>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Camiseta Premium Algodón - Varios Colores</h3>
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Camiseta
+                            Premium Algodón - Varios Colores</h3>
                         <div class="flex flex-col">
                             <span class="text-xs text-gray-500 line-through">$499</span>
                             <span class="text-lg font-bold text-gray-800 dark:text-white">$299</span>
@@ -314,17 +346,20 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de producto -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="relative">
                         <div class="h-48 bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-blender text-5xl text-gray-400"></i>
                         </div>
-                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-20%</div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            -20%</div>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Licuadora de Alto Rendimiento 1000W</h3>
+                        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Licuadora de
+                            Alto Rendimiento 1000W</h3>
                         <div class="flex flex-col">
                             <span class="text-xs text-gray-500 line-through">$1,499</span>
                             <span class="text-lg font-bold text-gray-800 dark:text-white">$1,199</span>
@@ -340,92 +375,104 @@
                 </a>
             </div>
         </section>
-        
+
         <!-- Sección de Visto Recientemente -->
         <section class="mb-8">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-gray-800 dark:text-white">Visto Recientemente</h2>
                 <a href="#" class="text-primary hover:underline">Ver historial</a>
             </div>
-            
+
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
                 <!-- Carta de Productos -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="h-36 bg-gray-200 flex items-center justify-center">
                         <i class="fas fa-tv text-4xl text-gray-400"></i>
                     </div>
                     <div class="p-3">
-                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Smart TV 4K 55" UHD</h3>
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Smart TV 4K
+                            55" UHD</h3>
                         <span class="text-base font-bold text-gray-800 dark:text-white">$7,999</span>
                         <div class="flex items-center mt-1">
                             <span class="text-xs text-green-600">Envío gratis</span>
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de Productos -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="h-36 bg-gray-200 flex items-center justify-center">
                         <i class="fas fa-chair text-4xl text-gray-400"></i>
                     </div>
                     <div class="p-3">
-                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Silla Ergonómica para Oficina</h3>
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Silla
+                            Ergonómica para Oficina</h3>
                         <span class="text-base font-bold text-gray-800 dark:text-white">$2,499</span>
                         <div class="flex items-center mt-1">
                             <span class="text-xs text-green-600">Envío gratis</span>
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de Productos -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="h-36 bg-gray-200 flex items-center justify-center">
                         <i class="fas fa-coffee text-4xl text-gray-400"></i>
                     </div>
                     <div class="p-3">
-                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Cafetera Automática Programable</h3>
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Cafetera
+                            Automática Programable</h3>
                         <span class="text-base font-bold text-gray-800 dark:text-white">$1,299</span>
                         <div class="flex items-center mt-1">
                             <span class="text-xs text-green-600">Envío gratis</span>
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de Productos -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="h-36 bg-gray-200 flex items-center justify-center">
                         <i class="fas fa-shoe-prints text-4xl text-gray-400"></i>
                     </div>
                     <div class="p-3">
-                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Tenis Deportivos - Negro</h3>
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Tenis
+                            Deportivos - Negro</h3>
                         <span class="text-base font-bold text-gray-800 dark:text-white">$899</span>
                         <div class="flex items-center mt-1">
                             <span class="text-xs text-green-600">Envío gratis</span>
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de Productos -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="h-36 bg-gray-200 flex items-center justify-center">
                         <i class="fas fa-book text-4xl text-gray-400"></i>
                     </div>
                     <div class="p-3">
-                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Libro - Bestseller Internacional</h3>
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Libro -
+                            Bestseller Internacional</h3>
                         <span class="text-base font-bold text-gray-800 dark:text-white">$349</span>
                         <div class="flex items-center mt-1">
                             <span class="text-xs text-green-600">Envío gratis</span>
                         </div>
                     </div>
                 </a>
-                
+
                 <!-- Carta de Productos -->
-                <a href="#" class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                <a href="#"
+                    class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
                     <div class="h-36 bg-gray-200 flex items-center justify-center">
                         <i class="fas fa-camera text-4xl text-gray-400"></i>
                     </div>
                     <div class="p-3">
-                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Cámara Digital 24MP con Zoom</h3>
+                        <h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 line-clamp-2">Cámara
+                            Digital 24MP con Zoom</h3>
                         <span class="text-base font-bold text-gray-800 dark:text-white">$4,299</span>
                         <div class="flex items-center mt-1">
                             <span class="text-xs text-green-600">Envío gratis</span>
@@ -434,7 +481,7 @@
                 </a>
             </div>
         </section>
-        
+
         <!-- Banners Promocionales -->
         <section class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow">
@@ -449,14 +496,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow">
                 <div class="p-6 flex flex-col sm:flex-row items-center">
                     <div class="mb-4 sm:mb-0 sm:mr-6">
                         <i class="fas fa-credit-card text-5xl text-primary"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Hasta 12 meses sin intereses</h3>
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Hasta 12 meses sin intereses
+                        </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Con tarjetas participantes</p>
                         <a href="#" class="text-primary hover:underline text-sm font-medium">Ver promociones</a>
                     </div>
@@ -464,7 +512,7 @@
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 pt-8 pb-4">
         <div class="container mx-auto px-4">
@@ -472,38 +520,55 @@
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Ayuda</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Preguntas frecuentes</a></li>
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Compras y pedidos</a></li>
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Devoluciones</a></li>
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Contacto</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Preguntas
+                                frecuentes</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Compras y
+                                pedidos</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Devoluciones</a>
+                        </li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Contacto</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Métodos de pago</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Tarjetas de crédito</a></li>
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Tarjetas de débito</a></li>
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Transferencia bancaria</a></li>
-                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Efectivo</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Tarjetas de
+                                crédito</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Tarjetas de
+                                débito</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Transferencia
+                                bancaria</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary text-sm">Efectivo</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 md:mb-0">© 2025 ShopZone. Todos los derechos reservados</p>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 md:mb-0">© 2025 ShopZone. Todos los derechos
+                    reservados</p>
                 <div class="flex space-x-2">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23016FD0'/%3E%3Cpath d='M12 17H18V16H12V17Z' fill='white'/%3E%3Cpath d='M18 7H12V8H18V7Z' fill='white'/%3E%3Cpath d='M12 15.5H18V8.5H12V15.5Z' fill='white'/%3E%3Cpath d='M26 10.5C26 9.12 24.88 8 23.5 8H22V13H23.5C24.88 13 26 11.88 26 10.5Z' fill='white'/%3E%3Cpath d='M22 15V14H23.5C25.43 14 27 12.43 27 10.5C27 8.57 25.43 7 23.5 7H21V16H22V15Z' fill='white'/%3E%3C/svg%3E" alt="American Express" class="h-6">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23F79E1B'/%3E%3Cpath d='M14 9.5C14 11.43 15.57 13 17.5 13H23V9.5C23 7.57 21.43 6 19.5 6H14V9.5Z' fill='%23EB001B'/%3E%3Cpath d='M14 14.5C14 12.57 15.57 11 17.5 11H23V14.5C23 16.43 21.43 18 19.5 18H14V14.5Z' fill='%23F79E1B'/%3E%3C/svg%3E" alt="Mastercard" class="h-6">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%231A1F71'/%3E%3Cpath d='M19.5 17H24L26 7H21.5L19.5 17Z' fill='%23F7B600'/%3E%3Cpath d='M13.5 7L11 12.5L10.5 10.5L10 7H8L6 17H8.5L9.5 11L10.5 17H12L15 7H13.5Z' fill='white'/%3E%3Cpath d='M26.5 13.5H29L29.5 11.5H27L27.5 9.5H30L30.5 7H26L24.5 17H29L29.5 15H27L26.5 13.5Z' fill='white'/%3E%3Cpath d='M30.5 17H33L34.5 7H32L30.5 17Z' fill='white'/%3E%3C/svg%3E" alt="Visa" class="h-6">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23003087'/%3E%3Cpath d='M13 9.5H17C18.7 9.5 19.5 10.3 19.4 11.6C19.2 14.1 17.4 14.5 15.7 14.5H14.5L14 17H11.5L13 9.5ZM14.4 12.5H16C16.7 12.5 17 12.2 17 11.7C17 11.3 16.7 11 16 11H14.7L14.4 12.5Z' fill='white'/%3E%3Cpath d='M19 14.5C19 12.6 20.5 11 22.4 11C24.3 11 25.1 12.6 24.5 14.5C23.9 16.4 22 18 20.1 18C18.2 18 18 16.4 19 14.5ZM22 14.5C22.2 13.9 22.1 13.5 21.5 13.5C20.9 13.5 20.5 13.9 20.3 14.5C20.1 15.1 20.2 15.5 20.8 15.5C21.4 15.5 21.8 15.1 22 14.5Z' fill='white'/%3E%3Cpath d='M25 17L26 11H28L27.8 11.7C28.3 11.2 29 11 29.8 11C30.5 11 31.1 11.5 30.8 12.7L30 17H27.5L28.2 13.8C28.3 13.2 28.2 13 27.8 13C27.2 13 27 13.5 26.9 14L26.2 17H25Z' fill='white'/%3E%3C/svg%3E" alt="PayPal" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23016FD0'/%3E%3Cpath d='M12 17H18V16H12V17Z' fill='white'/%3E%3Cpath d='M18 7H12V8H18V7Z' fill='white'/%3E%3Cpath d='M12 15.5H18V8.5H12V15.5Z' fill='white'/%3E%3Cpath d='M26 10.5C26 9.12 24.88 8 23.5 8H22V13H23.5C24.88 13 26 11.88 26 10.5Z' fill='white'/%3E%3Cpath d='M22 15V14H23.5C25.43 14 27 12.43 27 10.5C27 8.57 25.43 7 23.5 7H21V16H22V15Z' fill='white'/%3E%3C/svg%3E"
+                        alt="American Express" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23F79E1B'/%3E%3Cpath d='M14 9.5C14 11.43 15.57 13 17.5 13H23V9.5C23 7.57 21.43 6 19.5 6H14V9.5Z' fill='%23EB001B'/%3E%3Cpath d='M14 14.5C14 12.57 15.57 11 17.5 11H23V14.5C23 16.43 21.43 18 19.5 18H14V14.5Z' fill='%23F79E1B'/%3E%3C/svg%3E"
+                        alt="Mastercard" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%231A1F71'/%3E%3Cpath d='M19.5 17H24L26 7H21.5L19.5 17Z' fill='%23F7B600'/%3E%3Cpath d='M13.5 7L11 12.5L10.5 10.5L10 7H8L6 17H8.5L9.5 11L10.5 17H12L15 7H13.5Z' fill='white'/%3E%3Cpath d='M26.5 13.5H29L29.5 11.5H27L27.5 9.5H30L30.5 7H26L24.5 17H29L29.5 15H27L26.5 13.5Z' fill='white'/%3E%3Cpath d='M30.5 17H33L34.5 7H32L30.5 17Z' fill='white'/%3E%3C/svg%3E"
+                        alt="Visa" class="h-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Crect width='40' height='24' rx='4' fill='%23003087'/%3E%3Cpath d='M13 9.5H17C18.7 9.5 19.5 10.3 19.4 11.6C19.2 14.1 17.4 14.5 15.7 14.5H14.5L14 17H11.5L13 9.5ZM14.4 12.5H16C16.7 12.5 17 12.2 17 11.7C17 11.3 16.7 11 16 11H14.7L14.4 12.5Z' fill='white'/%3E%3Cpath d='M19 14.5C19 12.6 20.5 11 22.4 11C24.3 11 25.1 12.6 24.5 14.5C23.9 16.4 22 18 20.1 18C18.2 18 18 16.4 19 14.5ZM22 14.5C22.2 13.9 22.1 13.5 21.5 13.5C20.9 13.5 20.5 13.9 20.3 14.5C20.1 15.1 20.2 15.5 20.8 15.5C21.4 15.5 21.8 15.1 22 14.5Z' fill='white'/%3E%3Cpath d='M25 17L26 11H28L27.8 11.7C28.3 11.2 29 11 29.8 11C30.5 11 31.1 11.5 30.8 12.7L30 17H27.5L28.2 13.8C28.3 13.2 28.2 13 27.8 13C27.2 13 27 13.5 26.9 14L26.2 17H25Z' fill='white'/%3E%3C/svg%3E"
+                        alt="PayPal" class="h-6">
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <!-- Mobile Navigation (Abajo) -->
-    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-10">
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-10">
         <div class="flex justify-around">
             <a href="#" class="flex flex-col items-center py-2 px-3 text-primary">
                 <i class="fas fa-home text-xl"></i>
@@ -527,29 +592,34 @@
             </a>
         </div>
     </nav>
-    
+
     <!-- Modal de carrito (Hidden by default) -->
     <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
         <div class="w-full max-w-md bg-white dark:bg-gray-800 h-full overflow-y-auto shadow-xl">
-            <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
+            <div
+                class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
                 <h2 class="text-xl font-bold text-gray-800 dark:text-white">Tu carrito</h2>
-                <button id="closeCart" class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
+                <button id="closeCart"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            
+
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
                 <!-- Item de carrito -->
                 <div id="item-1" class="p-4 flex">
                     <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
                     <div class="ml-4 flex-grow">
-                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Smartphone XYZ Pro 128GB - Negro</h3>
+                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Smartphone XYZ Pro 128GB - Negro
+                        </h3>
                         <div class="flex justify-between mt-1">
                             <span class="text-primary font-medium">$6,749</span>
                             <div class="flex items-center">
-                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
+                                <button
+                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
                                 <span class="mx-2 text-sm">1</span>
-                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
+                                <button
+                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
                             </div>
                         </div>
                         <div class="mt-2 flex justify-between items-center">
@@ -558,18 +628,21 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Item de carrito -->
                 <div class="p-4 flex">
                     <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
                     <div class="ml-4 flex-grow">
-                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Auriculares Inalámbricos Bluetooth - Blanco</h3>
+                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Auriculares Inalámbricos Bluetooth
+                            - Blanco</h3>
                         <div class="flex justify-between mt-1">
                             <span class="text-primary font-medium">$1,399</span>
                             <div class="flex items-center">
-                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
+                                <button
+                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
                                 <span class="mx-2 text-sm">1</span>
-                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
+                                <button
+                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
                             </div>
                         </div>
                         <div class="mt-2 flex justify-between items-center">
@@ -578,18 +651,21 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Item de carrito -->
                 <div class="p-4 flex">
                     <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
                     <div class="ml-4 flex-grow">
-                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Camiseta Premium Algodón - Rojo (M)</h3>
+                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Camiseta Premium Algodón - Rojo
+                            (M)</h3>
                         <div class="flex justify-between mt-1">
                             <span class="text-primary font-medium">$299</span>
                             <div class="flex items-center">
-                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
+                                <button
+                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
                                 <span class="mx-2 text-sm">1</span>
-                                <button class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
+                                <button
+                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
                             </div>
                         </div>
                         <div class="mt-2 flex justify-between items-center">
@@ -599,7 +675,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 sticky bottom-0">
                 <div class="mb-4">
                     <div class="flex justify-between mb-2">
@@ -615,18 +691,19 @@
                         <span class="text-gray-800 dark:text-white">$8,447</span>
                     </div>
                 </div>
-                
-                <a href="#" class="block bg-primary text-white text-center py-3 rounded-md hover:bg-primary/90 transition">
+
+                <a href="#"
+                    class="block bg-primary text-white text-center py-3 rounded-md hover:bg-primary/90 transition">
                     Proceder al pago
                 </a>
-                
+
                 <a href="#" class="block text-center text-primary mt-3 hover:underline">
                     Seguir comprando
                 </a>
             </div>
         </div>
     </div>
-    
+
     <script>
         // Cart Modal Toggle
         document.addEventListener('DOMContentLoaded', () => {
@@ -636,12 +713,12 @@
                     document.getElementById('cartModal').classList.toggle('hidden');
                 });
             });
-            
+
             // Close cart modal
             document.getElementById('closeCart').addEventListener('click', () => {
                 document.getElementById('cartModal').classList.add('hidden');
             });
-            
+
             // Close cart when clicking outside
             document.getElementById('cartModal').addEventListener('click', (e) => {
                 if (e.target === document.getElementById('cartModal')) {
@@ -650,6 +727,11 @@
             });
         });
     </script>
+    <script type="module" src="/assets/js/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth-service.js"></script>
+    <script type="module" src="/assets/js/cart-service.js"></script>
+    <script type="module" src="/assets/js/auth-ui.js"></script>
     <script src="./assets/js/product-links.js"></script>
 </body>
+
 </html>
