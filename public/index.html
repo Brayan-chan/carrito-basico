@@ -48,26 +48,10 @@
 
             <!-- Iconos de navegación -->
             <div class="order-2 md:order-3 flex items-center" id="auth-links">
-                <div class="hidden md:flex items-center mr-4">
-                    <i class="fas fa-map-marker-alt text-dark mr-1"></i>
-                    <span class="text-sm text-dark">Enviar a</span>
+                <!-- Se llenará dinámicamente con auth-ui.js -->
+                <div class="flex items-center">
+                    <span class="text-sm text-gray-500">Cargando...</span>
                 </div>
-
-                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
-                    <i class="far fa-user"></i>
-                    <span class="hidden md:inline ml-1 text-sm">Mi cuenta</span>
-                </a>
-
-                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary relative">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="hidden md:inline ml-1 text-sm">Carrito</span>
-                    <span
-                        class="cart-counter absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
-                </a>
-
-                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
-                    <i class="far fa-bell"></i>
-                </a>
             </div>
         </div>
     </header>
@@ -731,6 +715,7 @@
     <script type="module" src="/assets/js/auth-service.js"></script>
     <script type="module" src="/assets/js/cart-service.js"></script>
     <script type="module" src="/assets/js/auth-ui.js"></script>
+    <script type="module" src="/assets/js/offline-handler.js"></script>
     <script src="./assets/js/product-links.js"></script>
 </body>
 
