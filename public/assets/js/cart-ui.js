@@ -36,7 +36,7 @@ const CartUI = {
   // Cargar los items del carrito en la página de carrito
   async loadCartItems() {
     const cartItemsContainer = document.getElementById("cart-items")
-    const checkoutBtn = document.getElementById("checkout-btn")
+    const checkoutButton = document.querySelector("#cartModal a.block.bg-primary");
     const cartSubtotal = document.getElementById("cart-subtotal")
     const cartTotal = document.getElementById("cart-total")
 
@@ -57,9 +57,9 @@ const CartUI = {
       `
 
       // Deshabilitar botón de checkout
-      if (checkoutBtn) {
-        checkoutBtn.disabled = true
-        checkoutBtn.classList.add("opacity-50", "cursor-not-allowed")
+      if (checkoutButton) {
+        checkoutButton.disabled = true
+        checkoutButton.classList.add("opacity-50", "cursor-not-allowed")
       }
     } else {
       // Renderizar items del carrito
@@ -336,67 +336,73 @@ const CartUI = {
     // Botones para disminuir cantidad
     document.querySelectorAll(".modal-decrease-quantity").forEach((button) => {
       button.addEventListener("click", async (e) => {
-        const item = e.target.closest("[data-product-id]")
-        const productId = item.dataset.productId
-        const quantitySpan = item.querySelector(".flex.items-center span")
-        let currentQuantity = Number.parseInt(quantitySpan.textContent)
-
+        const item = e.target.closest("[data-product-id]");
+        const productId = item.dataset.productId;
+        const quantitySpan = item.querySelector(".flex.items-center span");
+        let currentQuantity = Number.parseInt(quantitySpan.textContent);
+  
         if (currentQuantity > 1) {
-          currentQuantity--
-          quantitySpan.textContent = currentQuantity
-          await CartService.updateQuantity(productId, currentQuantity)
-          this.updateCartModalTotals()
+          currentQuantity--;
+          quantitySpan.textContent = currentQuantity;
+          await CartService.updateQuantity(productId, currentQuantity);
+          this.updateCartModalTotals();
         }
-      })
-    })
-
+      });
+    });
+  
     // Botones para aumentar cantidad
     document.querySelectorAll(".modal-increase-quantity").forEach((button) => {
       button.addEventListener("click", async (e) => {
-        const item = e.target.closest("[data-product-id]")
-        const productId = item.dataset.productId
-        const quantitySpan = item.querySelector(".flex.items-center span")
-        let currentQuantity = Number.parseInt(quantitySpan.textContent)
-
-        currentQuantity++
-        quantitySpan.textContent = currentQuantity
-        await CartService.updateQuantity(productId, currentQuantity)
-        this.updateCartModalTotals()
-      })
-    })
-
+        const item = e.target.closest("[data-product-id]");
+        const productId = item.dataset.productId;
+        const quantitySpan = item.querySelector(".flex.items-center span");
+        let currentQuantity = Number.parseInt(quantitySpan.textContent);
+  
+        currentQuantity++;
+        quantitySpan.textContent = currentQuantity;
+        await CartService.updateQuantity(productId, currentQuantity);
+        this.updateCartModalTotals();
+      });
+    });
+  
     // Botones para eliminar items
     document.querySelectorAll(".modal-remove-item").forEach((button) => {
       button.addEventListener("click", async (e) => {
-        const item = e.target.closest("[data-product-id]")
-        const productId = item.dataset.productId
-
-        await CartService.removeFromCart(productId)
-
+        const item = e.target.closest("[data-product-id]");
+        const productId = item.dataset.productId;
+  
+        await CartService.removeFromCart(productId);
+  
         // Recargar contenido del modal
-        this.loadCartModalContent()
-      })
-    })
-
+        this.loadCartModalContent();
+      });
+    });
+  
     // Botón de proceder al pago
-    const checkoutButton = document.querySelector("#cartModal a.block.bg-primary")
+    const checkoutButton = document.querySelector("#cartModal a.block.bg-primary");
     if (checkoutButton) {
       checkoutButton.addEventListener("click", async (e) => {
-        e.preventDefault()
-
+        e.preventDefault();
+  
         // Verificar autenticación
         if (!AuthService.isAuthenticated()) {
           // Guardar URL de redirección
-          sessionStorage.setItem("redirectAfterLogin", "/views/cart.html")
-
+          sessionStorage.setItem("redirectAfterLogin", "/views/cart.html");
+  
           // Redirigir a login
-          window.location.href = "/views/login.html"
-          return
+          window.location.href = "/views/login.html";
+          return;
         }
-
+  
+        // Cerrar el modal antes de redirigir
+        const cartModal = document.getElementById("cartModal");
+        if (cartModal) {
+          cartModal.classList.add("hidden");
+        }
+  
         // Redirigir a checkout
-        window.location.href = "/views/checkout.html"
-      })
+        window.location.href = "/views/checkout.html";
+      });
     }
   },
 
