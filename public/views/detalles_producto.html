@@ -35,6 +35,7 @@
         });
     </script>
     <style>
+        /* Estilos para el selector de colores en caso de que el tema sea oscuro */
         .color-option {
             width: 30px;
             height: 30px;
@@ -101,6 +102,16 @@
         .animate-fadeIn {
             animation: fadeIn 0.5s ease forwards;
         }
+
+        /* Estilos para el input de cantidad */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen">
@@ -134,26 +145,11 @@
             </div>
             
             <!-- Navigation Icons -->
-            <div class="order-2 md:order-3 flex items-center">
-                <div class="hidden md:flex items-center mr-4">
-                    <i class="fas fa-map-marker-alt text-dark mr-1"></i>
-                    <span class="text-sm text-dark">Enviar a</span>
+            <div class="order-2 md:order-3 flex items-center" id="auth-links">
+                <!-- Se llenará dinámicamente con auth-ui.js -->
+                <div class="flex items-center">
+                    <span class="text-sm text-gray-500">Cargando...</span>
                 </div>
-                
-                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
-                    <i class="far fa-user"></i>
-                    <span class="hidden md:inline ml-1 text-sm">Mi cuenta</span>
-                </a>
-                
-                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary relative">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="hidden md:inline ml-1 text-sm">Carrito</span>
-                    <span class="absolute -top-2 -right-1 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
-                </a>
-                
-                <a href="#" class="px-1 md:px-2 py-1 mx-1 text-dark hover:text-primary">
-                    <i class="far fa-bell"></i>
-                </a>
             </div>
         </div>
     </header>
@@ -220,13 +216,13 @@
                     </svg>
                 </li>
                 <li class="flex items-center">
-                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary">Accesorios para móviles</a>
+                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary">Smartphones</a>
                     <svg class="h-4 w-4 mx-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                     </svg>
                 </li>
                 <li>
-                    <span class="text-gray-700 dark:text-gray-300">Funda de silicona con MagSafe</span>
+                    <span class="text-gray-700 dark:text-gray-300">iPhone 14 Pro</span>
                 </li>
             </ol>
         </nav>
@@ -242,29 +238,17 @@
                     <div class="zoom-gallery mb-4">
                         <div id="mainImageContainer" class="bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center h-80 sm:h-96 md:h-[450px]">
                             <!-- Main product image -->
-                            <img id="mainImage" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ff9ff3'/%3E%3Crect x='150' y='120' width='100' height='160' rx='15' ry='15' fill='%23ff9ff3'/%3E%3Ccircle cx='180' cy='150' r='15' fill='%23f8f8f8'/%3E%3Crect x='170' y='240' width='60' height='10' rx='5' ry='5' fill='%23f8f8f8'/%3E%3C/svg%3E" alt="Funda de silicona - Vista principal" class="max-h-full max-w-full object-contain">
+                            <img id="mainImage" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ddd'/%3E%3Cpath d='M200,100 L200,300 M100,200 L300,200' stroke='%23fff' stroke-width='20'/%3E%3C/svg%3E" alt="Producto - Vista principal" class="max-h-full max-w-full object-contain transition-opacity duration-200">
                         </div>
                     </div>
                     
                     <!-- Thumbnail Gallery -->
                     <div class="grid grid-cols-6 gap-2">
-                        <div class="thumbnail active col-span-1 rounded-md overflow-hidden cursor-pointer" data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ff9ff3'/%3E%3Crect x='150' y='120' width='100' height='160' rx='15' ry='15' fill='%23ff9ff3'/%3E%3Ccircle cx='180' cy='150' r='15' fill='%23f8f8f8'/%3E%3Crect x='170' y='240' width='60' height='10' rx='5' ry='5' fill='%23f8f8f8'/%3E%3C/svg%3E">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ff9ff3'/%3E%3Crect x='150' y='120' width='100' height='160' rx='15' ry='15' fill='%23ff9ff3'/%3E%3Ccircle cx='180' cy='150' r='15' fill='%23f8f8f8'/%3E%3Crect x='170' y='240' width='60' height='10' rx='5' ry='5' fill='%23f8f8f8'/%3E%3C/svg%3E" alt="Vista frontal" class="w-full h-full object-cover">
-                        </div>
-                        <div class="thumbnail col-span-1 rounded-md overflow-hidden cursor-pointer" data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Cpath d='M250,200 L200,150 L150,200 L200,250 Z' fill='%23ff9ff3'/%3E%3Crect x='150' y='120' width='100' height='160' rx='15' ry='15' fill='%23ff9ff3'/%3E%3C/svg%3E">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Cpath d='M250,200 L200,150 L150,200 L200,250 Z' fill='%23ff9ff3'/%3E%3Crect x='150' y='120' width='100' height='160' rx='15' ry='15' fill='%23ff9ff3'/%3E%3C/svg%3E" alt="Vista lateral" class="w-full h-full object-cover">
-                        </div>
-                        <div class="thumbnail col-span-1 rounded-md overflow-hidden cursor-pointer" data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ff9ff3'/%3E%3Cpath d='M200,100 L180,140 L220,140 Z' fill='%23f8f8f8'/%3E%3C/svg%3E">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ff9ff3'/%3E%3Cpath d='M200,100 L180,140 L220,140 Z' fill='%23f8f8f8'/%3E%3C/svg%3E" alt="Vista trasera" class="w-full h-full object-cover">
-                        </div>
-                        <div class="thumbnail col-span-1 rounded-md overflow-hidden cursor-pointer" data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='120' fill='%23ff9ff3'/%3E%3Crect x='160' y='160' width='80' height='80' fill='%23f8f8f8'/%3E%3C/svg%3E">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Ccircle cx='200' cy='200' r='120' fill='%23ff9ff3'/%3E%3Crect x='160' y='160' width='80' height='80' fill='%23f8f8f8'/%3E%3C/svg%3E" alt="Vista detalle" class="w-full h-full object-cover">
-                        </div>
-                        <div class="thumbnail col-span-1 rounded-md overflow-hidden cursor-pointer" data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Crect x='100' y='100' width='200' height='200' rx='20' ry='20' fill='%23ff9ff3'/%3E%3Ctext x='200' y='210' text-anchor='middle' fill='%23f8f8f8' font-family='Arial' font-size='40'%3EMagSafe%3C/text%3E%3C/svg%3E">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Crect x='100' y='100' width='200' height='200' rx='20' ry='20' fill='%23ff9ff3'/%3E%3Ctext x='200' y='210' text-anchor='middle' fill='%23f8f8f8' font-family='Arial' font-size='40'%3EMagSafe%3C/text%3E%3C/svg%3E" alt="Vista MagSafe" class="w-full h-full object-cover">
-                        </div>
-                        <div class="thumbnail col-span-1 rounded-md overflow-hidden cursor-pointer" data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Crect x='120' y='120' width='160' height='160' fill='%23ff9ff3'/%3E%3Ctext x='200' y='210' text-anchor='middle' fill='%23f8f8f8' font-family='Arial' font-size='24'%3EEcológico%3C/text%3E%3C/svg%3E">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8f8f8'/%3E%3Crect x='120' y='120' width='160' height='160' fill='%23ff9ff3'/%3E%3Ctext x='200' y='210' text-anchor='middle' fill='%23f8f8f8' font-family='Arial' font-size='24'%3EEcológico%3C/text%3E%3C/svg%3E" alt="Material ecológico" class="w-full h-full object-cover">
+                        <!-- Thumbnails will be loaded dynamically -->
+                        <div class="thumbnail active col-span-1 rounded-md overflow-hidden cursor-pointer">
+                            <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                <i class="fas fa-spinner fa-spin text-gray-400"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,7 +258,7 @@
                     <!-- New badge & product name -->
                     <div class="mb-4">
                         <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded mb-2">Nuevo</span>
-                        <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">Funda de silicona con MagSafe para el iPhone 16 Plus - Peonía</h1>
+                        <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">Cargando producto...</h1>
                         <div class="flex items-center">
                             <div class="flex items-center mr-3">
                                 <i class="fas fa-star text-yellow-400 text-sm"></i>
@@ -282,7 +266,7 @@
                                 <i class="fas fa-star text-yellow-400 text-sm"></i>
                                 <i class="fas fa-star text-yellow-400 text-sm"></i>
                                 <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
-                                <span class="ml-1 text-gray-600 dark:text-gray-300 text-sm">(128)</span>
+                                <span class="ml-1 text-gray-600 dark:text-gray-300 text-sm">(0)</span>
                             </div>
                             <a href="#reviews" class="text-primary text-sm hover:underline">Ver reseñas</a>
                         </div>
@@ -290,9 +274,9 @@
                     
                     <!-- Price -->
                     <div class="mb-6">
-                        <span class="text-2xl font-bold text-gray-800 dark:text-white">59,00 €</span>
+                        <span class="text-2xl font-bold text-gray-800 dark:text-white">$0.00</span>
                         <div class="mt-1">
-                            <span class="text-sm text-gray-600 dark:text-gray-400">O hasta 3 cuotas sin intereses de 19,67 €</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">O hasta 3 cuotas sin intereses</span>
                         </div>
                         <div class="mt-1 flex items-center">
                             <span class="text-sm text-green-600">Envío gratis</span>
@@ -302,15 +286,14 @@
                     
                     <!-- Product options -->
                     <div class="mb-6 space-y-5">
-                        <!-- Size selector -->
-                        <div>
+                        <!-- Size selector (if applicable) -->
+                        <div class="hidden">
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tamaño</label>
                             <div class="relative">
                                 <select class="appearance-none w-full lg:w-72 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-base">
-                                    <option>iPhone 16 Plus</option>
-                                    <option>iPhone 16</option>
-                                    <option>iPhone 16 Pro</option>
-                                    <option>iPhone 16 Pro Max</option>
+                                    <option>Opción 1</option>
+                                    <option>Opción 2</option>
+                                    <option>Opción 3</option>
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-white">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -320,22 +303,11 @@
                             </div>
                         </div>
                         
-                        <!-- Color selector -->
+                        <!-- Color selector (if applicable) -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Color - Color peonía</label>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Color</label>
                             <div class="flex flex-wrap gap-2">
-                                <div class="color-option selected" style="background-color: #ff9ff3;" title="Peonía"></div>
-                                <div class="color-option" style="background-color: #74b9ff;" title="Azul"></div>
-                                <div class="color-option" style="background-color: #55efc4;" title="Menta"></div>
-                                <div class="color-option" style="background-color: #ff7675;" title="Coral"></div>
-                                <div class="color-option" style="background-color: #ffeaa7;" title="Amarillo"></div>
-                                <div class="color-option" style="background-color: #6c5ce7;" title="Azul profundo"></div>
-                                <div class="color-option" style="background-color: #636e72;" title="Gris oscuro"></div>
-                                <div class="color-option" style="background-color: #e84393;" title="Fucsia"></div>
-                                <div class="color-option" style="background-color: #6D214F;" title="Púrpura"></div>
-                                <div class="color-option" style="background-color: #2d3436;" title="Negro"></div>
-                                <div class="color-option" style="background-color: #84817a;" title="Gris marrón"></div>
-                                <div class="color-option" style="background-color: #227093;" title="Azul marino"></div>
+                                <!-- Colors will be loaded dynamically -->
                             </div>
                         </div>
                     </div>
@@ -344,7 +316,7 @@
                     <div class="mb-6 space-y-3">
                         <button class="w-full bg-primary text-white font-medium py-3 px-4 rounded-md hover:bg-primary/90 transition flex items-center justify-center">
                             <i class="fas fa-shopping-bag mr-2"></i>
-                            Añadir a la bolsa
+                            Añadir al carrito
                         </button>
                         
                         <a href="#" class="flex items-center justify-center text-primary hover:underline py-1">
@@ -357,9 +329,7 @@
                     <div class="mb-6">
                         <h3 class="font-medium text-gray-800 dark:text-white mb-2">Descripción del producto</h3>
                         <div class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                            <p>Esta funda de silicona está diseñada por especialistas para adaptarse perfectamente a los botones, la silueta y las curvas de tu iPhone sin abultar prácticamente nada.</p>
-                            <p>El exterior de silicona es suave al tacto, y el interior está forrado de microfibra para proteger tu iPhone. Además, los imanes la alinean a la perfección y facilitan la carga inalámbrica.</p>
-                            <p>Como todas las fundas de Apple, se ha sometido a miles de horas de pruebas a lo largo de todo el proceso de diseño y fabricación.</p>
+                            <p>Cargando descripción...</p>
                         </div>
                     </div>
                     
@@ -367,11 +337,7 @@
                     <div class="mb-6">
                         <h3 class="font-medium text-gray-800 dark:text-white mb-2">Características principales</h3>
                         <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                            <li>El exterior de silicona es suave al tacto</li>
-                            <li>El interior de microfibra protege tu iPhone</li>
-                            <li>Los imanes se alinean perfectamente con tu iPhone</li>
-                            <li>Compatible con cargadores MagSafe</li>
-                            <li>Diseñado por Apple para adaptarse perfectamente a tu dispositivo</li>
+                            <li>Cargando características...</li>
                         </ul>
                     </div>
                 </div>
@@ -465,49 +431,12 @@
     </nav>
     
     <!-- Scripts -->
-    <script src="/assets/js/details-render.js"></script>
-    <script>
-        // Handle color selection
-        const colorOptions = document.querySelectorAll('.color-option');
-        colorOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                colorOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                // Update the color label text
-                const colorName = this.getAttribute('title');
-                if (colorName) {
-                    const colorLabel = document.querySelector('label[class*="block text-sm font-medium"]:nth-of-type(2)');
-                    if (colorLabel) {
-                        colorLabel.textContent = `Color - Color ${colorName.toLowerCase()}`;
-                    }
-                }
-            });
-        });
-        
-        // Make main image zoomable with mousemove (for desktop)
-        const mainImageContainer = document.getElementById('mainImageContainer');
-        const mainImage = document.getElementById('mainImage');
-        
-        if (window.innerWidth >= 1024) { // Only for desktop
-            mainImageContainer.addEventListener('mouseenter', function() {
-                mainImage.style.transition = 'transform 0.2s ease';
-                mainImage.style.transformOrigin = 'center center';
-            });
-            
-            mainImageContainer.addEventListener('mousemove', function(e) {
-                const rect = mainImageContainer.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                
-                mainImage.style.transform = 'scale(1.2)';
-                mainImage.style.transformOrigin = `${x}% ${y}%`;
-            });
-            
-            mainImageContainer.addEventListener('mouseleave', function() {
-                mainImage.style.transform = 'scale(1)';
-            });
-        }
-    </script>
+    <script type="module" src="/assets/js/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth-service.js"></script>
+    <script type="module" src="/assets/js/cart-service.js"></script>
+    <script type="module" src="/assets/js/auth-ui.js"></script>
+    <script type="module" src="/assets/js/offline-handler.js"></script>
+    <script type="module" src="/assets/js/product-service.js"></script>
+    <script type="module" src="/assets/js/details-render.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 import { MercadoPagoConfig, Preference, Payment } from 'mercadopago';
-
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 // Verificar que el token de acceso esté disponible
@@ -25,32 +25,35 @@ export const createOrder = async (req, res) => {
             });
         }
 
-        // Obtener datos del producto del request (opcional)
-        const { product } = req.body || {};
+        // Obtener datos del carrito del request
+        const { items, cartItems } = req.body || {};
         
-        // Crear un objeto de preferencia
-        const preference = new Preference(client);
+        // Usar los items proporcionados o crear un item de prueba
+        const orderItems = items || cartItems || [
+            {
+                title: 'Producto de prueba',
+                unit_price: 5,
+                currency_id: 'MXN',
+                quantity: 1,
+            }
+        ];
         
         // Generar un ID de orden único
         const orderId = `order-${Date.now()}`;
         
+        // Crear un objeto de preferencia
+        const preference = new Preference(client);
+        
         const result = await preference.create({
             body: {
-                items: [
-                    {
-                        title: product?.title || 'iPhone 16 Plus',
-                        unit_price: product?.price || 5,
-                        currency_id: 'MXN',
-                        quantity: product?.quantity || 1,
-                    }
-                ],
+                items: orderItems,
                 back_urls: {
-                    success: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/success`,
-                    failure: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/failure`,
-                    pending: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/pending`
+                    success: `${process.env.APP_URL || 'http://localhost:3000'}/api/success`,
+                    failure: `${process.env.APP_URL || 'http://localhost:3000'}/api/failure`,
+                    pending: `${process.env.APP_URL || 'http://localhost:3000'}/api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: `https://915f-2806-10be-3-5b74-dcd8-2d48-9300-aff4.ngrok-free.app//api/webhook`,
+                notification_url: `${process.env.APP_URL || 'http://localhost:3000'}/api/webhook`,
                 external_reference: orderId
             }
         });
