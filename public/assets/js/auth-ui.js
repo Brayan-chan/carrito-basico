@@ -38,18 +38,6 @@ export function updateAuthUI() {
         }
       })
     }
-
-    // Actualizar contador del carrito
-    const cartCount = CartService.getCartItemCount()
-    const cartCountElement = document.querySelector(".cart-count")
-    if (cartCountElement) {
-      if (cartCount > 0) {
-        cartCountElement.textContent = cartCount
-        cartCountElement.classList.remove("hidden")
-      } else {
-        cartCountElement.classList.add("hidden")
-      }
-    }
   } else {
     // Usuario no autenticado
     authLinksContainer.innerHTML = `
@@ -68,19 +56,19 @@ export function updateAuthUI() {
         </a>
       </div>
     `
-
-    // Actualizar contador del carrito
-    const cartCount = CartService.getCartItemCount()
-    const cartCountElement = document.querySelector(".cart-count")
-    if (cartCountElement) {
-      if (cartCount > 0) {
-        cartCountElement.textContent = cartCount
-        cartCountElement.classList.remove("hidden")
-      } else {
-        cartCountElement.classList.add("hidden")
-      }
-    }
   }
+
+  // Actualizar contador del carrito
+  const cartCount = CartService.getCartItemCount()
+  const cartCountElements = document.querySelectorAll(".cart-count")
+  cartCountElements.forEach((element) => {
+    if (cartCount > 0) {
+      element.textContent = cartCount
+      element.classList.remove("hidden")
+    } else {
+      element.classList.add("hidden")
+    }
+  })
 
   // Inicializar botones del carrito
   const cartButtons = document.querySelectorAll(".cart-button")
