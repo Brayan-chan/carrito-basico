@@ -117,6 +117,8 @@ const CartService = {
 
   // Agregar producto al carrito
   async addToCart(product, quantity = 1) {
+    console.log("Agregando al carrito:", product, "cantidad:", quantity)
+
     const cartItem = {
       productoId: product.id,
       nombre: product.title || product.nombre,
@@ -168,6 +170,9 @@ const CartService = {
 
       this.saveLocalCart()
     }
+
+    // Asegurarse de que se dispare el evento de cambio en el carrito
+    this.dispatchCartEvent()
 
     return { success: true }
   },
@@ -282,6 +287,12 @@ const CartService = {
 
   // Disparar evento de cambio en el carrito
   dispatchCartEvent() {
+    console.log("Disparando evento cartChanged con:", {
+      cart: this.localCart,
+      itemCount: this.getCartItemCount(),
+      total: this.getCartTotal(),
+    })
+
     window.dispatchEvent(
       new CustomEvent("cartChanged", {
         detail: {
