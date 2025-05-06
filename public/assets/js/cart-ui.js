@@ -26,16 +26,16 @@ const CartUI = {
   // Actualizar el indicador del carrito en el header
   updateCartIndicator() {
     const cartCount = CartService.getCartItemCount()
-    const cartIndicator = document.querySelector(".cart-count")
+    const cartIndicators = document.querySelectorAll(".cart-count")
 
-    if (cartIndicator) {
+    cartIndicators.forEach((cartIndicator) => {
       if (cartCount > 0) {
         cartIndicator.textContent = cartCount
         cartIndicator.classList.remove("hidden")
       } else {
         cartIndicator.classList.add("hidden")
       }
-    }
+    })
   },
 
   // Cargar los items del carrito en la página de carrito
