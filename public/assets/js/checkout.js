@@ -51,8 +51,8 @@ export async function loadCartData() {
   const cartTotal = CartService.getCartTotal()
 
   // Actualizar el DOM con los datos del carrito
-  const cartItemsContainer = document.getElementById("cart-items")
-  const cartTotalElement = document.getElementById("cart-total")
+  const cartItemsContainer = document.getElementById("cart-items") || document.getElementById("order-items")
+  const cartTotalElement = document.getElementById("cart-total") || document.getElementById("checkout-total")
 
   if (cartItemsContainer) {
     if (cartItems.length === 0) {
@@ -105,6 +105,12 @@ export async function loadCartData() {
       checkoutButton.disabled = false
       checkoutButton.classList.remove("opacity-50", "cursor-not-allowed")
     }
+  }
+
+  // Actualizar subtotal en checkout
+  const checkoutSubtotal = document.getElementById("checkout-subtotal")
+  if (checkoutSubtotal) {
+    checkoutSubtotal.textContent = formatCurrency(cartTotal)
   }
 }
 
