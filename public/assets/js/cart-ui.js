@@ -14,11 +14,6 @@ const CartUI = {
     // Actualizar indicador del carrito al cargar la página
     this.updateCartIndicator()
 
-    // Si estamos en la página del carrito, cargar los items
-    if (window.location.pathname.includes("/views/cart.html")) {
-      this.loadCartItems()
-    }
-
     // Si estamos en cualquier página, inicializar el modal del carrito
     this.initCartModal()
   },
