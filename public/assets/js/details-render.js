@@ -345,7 +345,6 @@ function initializeThumbnailEvents() {
 // Función para manejar el botón de añadir al carrito
 function initializeAddToCartButton(product) {
   const addToCartButton = document.querySelector("button.w-full.bg-primary")
-  const saveForLaterButton = document.querySelector("a.flex.items-center.justify-center.text-primary")
   const quantityInput = document.getElementById("quantity-input")
 
   if (!addToCartButton) return
@@ -358,7 +357,6 @@ function initializeAddToCartButton(product) {
     return
   }
 
-  // Añadir evento al botón de añadir al carrito
   addToCartButton.addEventListener("click", async (e) => {
     e.preventDefault()
 
@@ -381,25 +379,31 @@ function initializeAddToCartButton(product) {
     }
 
     try {
+      console.log("Añadiendo al carrito:", product.id, product.title, quantity)
+
       // Añadir al carrito
-      await CartService.addToCart({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        images: product.images,
-        color: selectedColor,
-        quantity: quantity,
-      })
+      const result = await CartService.addToCart(
+        {
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          images: product.images || [],
+          color: selectedColor,
+        },
+        quantity,
+      )
 
-      // Animación de confirmación
-      const originalText = addToCartButton.innerHTML
-      addToCartButton.innerHTML = '<i class="fas fa-check mr-2"></i>Añadido al carrito'
-      addToCartButton.classList.add("bg-green-600")
+      if (result.success) {
+        // Animación de confirmación
+        const originalText = addToCartButton.innerHTML
+        addToCartButton.innerHTML = '<i class="fas fa-check mr-2"></i>Añadido al carrito'
+        addToCartButton.classList.add("bg-green-600")
 
-      setTimeout(() => {
-        addToCartButton.innerHTML = originalText
-        addToCartButton.classList.remove("bg-green-600")
-      }, 2000)
+        setTimeout(() => {
+          addToCartButton.innerHTML = originalText
+          addToCartButton.classList.remove("bg-green-600")
+        }, 2000)
+      }
     } catch (error) {
       console.error("Error al añadir al carrito:", error)
 
@@ -414,65 +418,6 @@ function initializeAddToCartButton(product) {
       }, 2000)
     }
   })
-
-  // Añadir evento al botón de guardar para más tarde
-  if (saveForLaterButton) {
-    saveForLaterButton.addEventListener("click", async (e) => {
-      e.preventDefault()
-
-      // Verificar si el usuario está autenticado
-      if (!AuthService.isAuthenticated()) {
-        // Guardar URL de redirección
-        sessionStorage.setItem("redirectAfterLogin", window.location.href)
-
-        // Redirigir a login
-        window.location.href = "/views/login.html"
-        return
-      }
-
-      try {
-        // Guardar en la lista de guardados del usuario
-        const { doc, updateDoc, arrayUnion, getDoc } = await import(
-          "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
-        )
-        const { db } = await import("./firebase-config.js")
-
-        const savedItem = {
-          productoId: product.id,
-          nombre: product.title || product.nombre,
-          precio: product.price || product.precio,
-          imagen: product.images?.[0] || product.imagen,
-          fechaGuardado: new Date().toISOString(),
-        }
-
-        await updateDoc(doc(db, "usuarios", AuthService.currentUser.uid), {
-          guardados: arrayUnion(savedItem),
-        })
-
-        // Animación de confirmación
-        const originalText = saveForLaterButton.innerHTML
-        saveForLaterButton.innerHTML = '<i class="fas fa-check mr-2"></i>Guardado'
-        saveForLaterButton.classList.add("text-green-600")
-
-        setTimeout(() => {
-          saveForLaterButton.innerHTML = originalText
-          saveForLaterButton.classList.remove("text-green-600")
-        }, 2000)
-      } catch (error) {
-        console.error("Error al guardar producto:", error)
-
-        // Mostrar mensaje de error
-        const originalText = saveForLaterButton.innerHTML
-        saveForLaterButton.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Error'
-        saveForLaterButton.classList.add("text-red-600")
-
-        setTimeout(() => {
-          saveForLaterButton.innerHTML = originalText
-          saveForLaterButton.classList.remove("text-red-600")
-        }, 2000)
-      }
-    })
-  }
 }
 
 // Función para añadir selector de cantidad
