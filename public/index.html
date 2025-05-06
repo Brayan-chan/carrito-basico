@@ -100,7 +100,6 @@
         </div>
     </nav>
 
-
     <!-- Contenido principal -->
     <main class="container mx-auto px-4 py-6">
         <!-- Sección de ofertas -->
@@ -270,11 +269,12 @@
                 <i class="fas fa-list text-xl"></i>
                 <span class="text-xs mt-1">Categorías</span>
             </a>
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
+            <a href="/views/cart.html" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400 cart-button">
                 <i class="fas fa-shopping-cart text-xl"></i>
                 <span class="text-xs mt-1">Carrito</span>
+                <span class="cart-count absolute top-1 right-1/4 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
             </a>
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
+            <a href="/views/profile.html" class="flex flex-col items-center py-2 px-3 text-gray-500 dark:text-gray-400">
                 <i class="fas fa-user text-xl"></i>
                 <span class="text-xs mt-1">Cuenta</span>
             </a>
@@ -294,73 +294,12 @@
             </div>
 
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
-                <!-- Item de carrito -->
-                <div id="item-1" class="p-4 flex">
-                    <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
-                    <div class="ml-4 flex-grow">
-                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Smartphone XYZ Pro 128GB - Negro
-                        </h3>
-                        <div class="flex justify-between mt-1">
-                            <span class="text-primary font-medium">$6,749</span>
-                            <div class="flex items-center">
-                                <button
-                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
-                                <span class="mx-2 text-sm">1</span>
-                                <button
-                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
-                            </div>
-                        </div>
-                        <div class="mt-2 flex justify-between items-center">
-                            <span class="text-xs text-green-600">Envío gratis</span>
-                            <button class="text-xs text-red-500">Eliminar</button>
-                        </div>
+                <!-- Los items del carrito se cargarán dinámicamente aquí -->
+                <div class="p-6 text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-spinner fa-spin text-gray-300 text-4xl"></i>
                     </div>
-                </div>
-
-                <!-- Item de carrito -->
-                <div class="p-4 flex">
-                    <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
-                    <div class="ml-4 flex-grow">
-                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Auriculares Inalámbricos Bluetooth
-                            - Blanco</h3>
-                        <div class="flex justify-between mt-1">
-                            <span class="text-primary font-medium">$1,399</span>
-                            <div class="flex items-center">
-                                <button
-                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
-                                <span class="mx-2 text-sm">1</span>
-                                <button
-                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
-                            </div>
-                        </div>
-                        <div class="mt-2 flex justify-between items-center">
-                            <span class="text-xs text-green-600">Envío gratis</span>
-                            <button class="text-xs text-red-500">Eliminar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item de carrito -->
-                <div class="p-4 flex">
-                    <div class="w-20 h-20 bg-gray-200 flex-shrink-0"></div>
-                    <div class="ml-4 flex-grow">
-                        <h3 class="font-medium text-sm text-gray-800 dark:text-white">Camiseta Premium Algodón - Rojo
-                            (M)</h3>
-                        <div class="flex justify-between mt-1">
-                            <span class="text-primary font-medium">$299</span>
-                            <div class="flex items-center">
-                                <button
-                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">-</button>
-                                <span class="mx-2 text-sm">1</span>
-                                <button
-                                    class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">+</button>
-                            </div>
-                        </div>
-                        <div class="mt-2 flex justify-between items-center">
-                            <span class="text-xs text-green-600">Envío gratis</span>
-                            <button class="text-xs text-red-500">Eliminar</button>
-                        </div>
-                    </div>
+                    <p class="text-gray-500 mb-4">Cargando carrito...</p>
                 </div>
             </div>
 
@@ -368,7 +307,7 @@
                 <div class="mb-4">
                     <div class="flex justify-between mb-2">
                         <span class="text-gray-600 dark:text-gray-300">Subtotal</span>
-                        <span class="font-medium text-gray-800 dark:text-white">$8,447</span>
+                        <span class="font-medium text-gray-800 dark:text-white">$0.00</span>
                     </div>
                     <div class="flex justify-between mb-2">
                         <span class="text-gray-600 dark:text-gray-300">Envío</span>
@@ -376,11 +315,11 @@
                     </div>
                     <div class="flex justify-between text-lg font-bold">
                         <span class="text-gray-800 dark:text-white">Total</span>
-                        <span class="text-gray-800 dark:text-white">$8,447</span>
+                        <span class="text-gray-800 dark:text-white">$0.00</span>
                     </div>
                 </div>
 
-                <a href="#"
+                <a href="/views/cart.html"
                     class="block bg-primary text-white text-center py-3 rounded-md hover:bg-primary/90 transition">
                     Proceder al pago
                 </a>
@@ -397,6 +336,7 @@
     <script type="module" src="/assets/js/auth-service.js"></script>
     <script type="module" src="/assets/js/cart-service.js"></script>
     <script type="module" src="/assets/js/auth-ui.js"></script>
+    <script type="module" src="/assets/js/cart-ui.js"></script>
     <script type="module" src="/assets/js/offline-handler.js"></script>
     <script type="module" src="/assets/js/product-service.js"></script>
     <script type="module" src="/assets/js/home-renderer.js"></script>
