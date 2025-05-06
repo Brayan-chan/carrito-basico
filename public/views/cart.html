@@ -21,6 +21,17 @@
             }
         }
     </script>
+    <style>
+        /* Estilos para el input de cantidad */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
     <!-- Banner Superior -->
@@ -125,21 +136,16 @@
     <script type="module" src="/assets/js/auth-service.js"></script>
     <script type="module" src="/assets/js/cart-service.js"></script>
     <script type="module" src="/assets/js/auth-ui.js"></script>
+    <script type="module" src="/assets/js/cart-ui.js"></script>
     <script type="module">
-        import { loadCartData, formatCurrency, initCheckout } from '/assets/js/checkout.js';
-        import CartService from '/assets/js/cart-service.js';
+        import { initCheckout } from '/assets/js/checkout.js';
+        import CartUI from '/assets/js/cart-ui.js';
         
         document.addEventListener('DOMContentLoaded', async function() {
             // Cerrar alerta de error
             document.getElementById('close-alert').addEventListener('click', () => {
                 document.getElementById('error-alert').classList.add('hidden');
             });
-            
-            // Cargar datos del carrito
-            await loadCartData();
-            
-            // Actualizar subtotal
-            document.getElementById('cart-subtotal').textContent = formatCurrency(CartService.getCartTotal());
             
             // Manejar botón de checkout
             document.getElementById('checkout-btn').addEventListener('click', async () => {
@@ -150,12 +156,6 @@
                     // Redirigir a la página de checkout
                     window.location.href = '/views/checkout.html';
                 }
-            });
-            
-            // Escuchar cambios en el carrito
-            window.addEventListener('cartChanged', async () => {
-                await loadCartData();
-                document.getElementById('cart-subtotal').textContent = formatCurrency(CartService.getCartTotal());
             });
         });
     </script>
