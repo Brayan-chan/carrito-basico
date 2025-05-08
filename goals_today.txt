@@ -22,3 +22,8 @@ TAREAS DEL DÍA - IMPLEMENTACIÓN E-COMMERCE
     - Probar flujo completo admin-usuario
     - Verificar actualizaciones en tiempo real
     - Validar notificaciones
+
+5. PEDIDOS (USER)
+    - Agregar la logistica en la vista de profile
+    - Mostrar el estado de las compras
+    
