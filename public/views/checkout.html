@@ -140,98 +140,144 @@
         import AuthService from '/assets/js/auth-service.js';
         
         document.addEventListener('DOMContentLoaded', async function() {
-            // Verificar autenticación y dirección antes de proceder
-            const canProceed = await initCheckout();
-            
-            if (!canProceed) {
-                // Si no puede proceder, la función initCheckout ya habrá redirigido al usuario
-                return;
-            }
+            console.log("Inicializando página de checkout");
             
             // Cerrar alerta de error
             document.getElementById('close-alert').addEventListener('click', () => {
                 document.getElementById('error-alert').classList.add('hidden');
             });
             
-            // Cargar datos del carrito
-            await loadCartData();
-            
-            // Cargar dirección de envío
-            await loadShippingAddress();
-            
-            // Calcular fecha de entrega estimada (5 días hábiles desde hoy)
-            const deliveryDate = calculateDeliveryDate(5);
-            document.getElementById('delivery-date').textContent = deliveryDate;
-            
-            // Actualizar subtotal
-            document.getElementById('checkout-subtotal').textContent = formatCurrency(CartService.getCartTotal());
-            document.getElementById('checkout-total').textContent = formatCurrency(CartService.getCartTotal());
-            
-            // Manejar botón de checkout
-            document.getElementById('checkout-btn').addEventListener('click', async () => {
-                try {
-                    // Mostrar indicador de carga
-                    const checkoutBtn = document.getElementById('checkout-btn');
-                    checkoutBtn.textContent = 'Procesando...';
-                    checkoutBtn.disabled = true;
-                    
-                    // Ocultar alerta de error si estaba visible
-                    document.getElementById('error-alert').classList.add('hidden');
-                    
-                    // Preparar datos del pedido
-                    const orderData = {
-                        items: CartService.getCart().map(item => ({
-                            title: item.nombre,
-                            unit_price: item.precio,
-                            quantity: item.cantidad
-                        })),
-                        userId: AuthService.currentUser.uid
-                    };
-                    
-                    // Procesar pago
-                    const result = await processPayment(orderData);
-                    
-                    if (!result.success) {
-                        // Mostrar error
-                        document.getElementById('error-message').textContent = result.error + (result.details ? ': ' + result.details : '');
-                        document.getElementById('error-alert').classList.remove('hidden');
+            try {
+                // Verificar autenticación y dirección antes de proceder
+                // Esperar un momento para asegurar que AuthService esté inicializado
+                setTimeout(async () => {
+                    try {
+                        const canProceed = await initCheckout();
                         
-                        // Restaurar botón
-                        checkoutBtn.textContent = 'Proceder al pago';
-                        checkoutBtn.disabled = false;
+                        if (!canProceed) {
+                            console.log("No se puede proceder con el checkout, redirigiendo...");
+                            // Si no puede proceder, la función initCheckout ya habrá redirigido al usuario
+                            return;
+                        }
+                        
+                        // Cargar datos del carrito
+                        await loadCartData();
+                        
+                        // Cargar dirección de envío
+                        await loadShippingAddress();
+                        
+                        // Calcular fecha de entrega estimada (5 días hábiles desde hoy)
+                        const deliveryDate = calculateDeliveryDate(5);
+                        document.getElementById('delivery-date').textContent = deliveryDate;
+                        
+                        // Actualizar subtotal
+                        document.getElementById('checkout-subtotal').textContent = formatCurrency(CartService.getCartTotal());
+                        document.getElementById('checkout-total').textContent = formatCurrency(CartService.getCartTotal());
+                        
+                        // Manejar botón de checkout
+                        document.getElementById('checkout-btn').addEventListener('click', async () => {
+                            try {
+                                console.log("Botón de checkout clickeado");
+                                
+                                // Mostrar indicador de carga
+                                const checkoutBtn = document.getElementById('checkout-btn');
+                                checkoutBtn.textContent = 'Procesando...';
+                                checkoutBtn.disabled = true;
+                                
+                                // Ocultar alerta de error si estaba visible
+                                document.getElementById('error-alert').classList.add('hidden');
+                                
+                                // Verificar que el usuario esté autenticado
+                                if (!AuthService.currentUser) {
+                                    throw new Error("Usuario no autenticado");
+                                }
+                                
+                                console.log("Preparando datos del pedido para usuario:", AuthService.currentUser.uid);
+                                
+                                // Preparar datos del pedido
+                                const orderData = {
+                                    items: CartService.getCart().map(item => ({
+                                        title: item.nombre,
+                                        unit_price: item.precio,
+                                        quantity: item.cantidad,
+                                        currency_id: "MXN"
+                                    })),
+                                    userId: AuthService.currentUser.uid
+                                };
+                                
+                                console.log("Datos del pedido:", orderData);
+                                
+                                // Procesar pago
+                                const result = await processPayment(orderData);
+                                
+                                if (!result.success) {
+                                    console.error("Error al procesar el pago:", result);
+                                    // Mostrar error
+                                    document.getElementById('error-message').textContent = result.error + (result.details ? ': ' + result.details : '');
+                                    document.getElementById('error-alert').classList.remove('hidden');
+                                    
+                                    // Restaurar botón
+                                    checkoutBtn.textContent = 'Proceder al pago';
+                                    checkoutBtn.disabled = false;
+                                }
+                                // Si es exitoso, processPayment ya habrá redirigido al usuario
+                                
+                            } catch (error) {
+                                console.error('Error al procesar el pago:', error);
+                                
+                                // Mostrar error
+                                document.getElementById('error-message').textContent = 'Error al procesar el pago: ' + error.message;
+                                document.getElementById('error-alert').classList.remove('hidden');
+                                
+                                // Restaurar botón
+                                document.getElementById('checkout-btn').textContent = 'Proceder al pago';
+                                document.getElementById('checkout-btn').disabled = false;
+                            }
+                        });
+                    } catch (error) {
+                        console.error("Error en el proceso de checkout:", error);
+                        document.getElementById('error-message').textContent = 'Error en el proceso de checkout: ' + error.message;
+                        document.getElementById('error-alert').classList.remove('hidden');
                     }
-                    // Si es exitoso, processPayment ya habrá redirigido al usuario
-                    
-                } catch (error) {
-                    console.error('Error al procesar el pago:', error);
-                    
-                    // Mostrar error
-                    document.getElementById('error-message').textContent = 'Error al procesar el pago. Por favor, intenta de nuevo.';
-                    document.getElementById('error-alert').classList.remove('hidden');
-                    
-                    // Restaurar botón
-                    document.getElementById('checkout-btn').textContent = 'Proceder al pago';
-                    document.getElementById('checkout-btn').disabled = false;
-                }
-            });
+                }, 500); // Esperar 500ms para asegurar que AuthService esté inicializado
+                
+            } catch (error) {
+                console.error("Error al inicializar checkout:", error);
+                document.getElementById('error-message').textContent = 'Error al inicializar el proceso de checkout: ' + error.message;
+                document.getElementById('error-alert').classList.remove('hidden');
+            }
         });
         
         // Función para cargar la dirección de envío
         async function loadShippingAddress() {
             try {
+                console.log("Cargando dirección de envío");
+                
+                if (!AuthService.currentUser) {
+                    throw new Error("Usuario no autenticado");
+                }
+                
                 const { doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
                 const { db } = await import("/assets/js/firebase-config.js");
                 
+                console.log("Obteniendo documento de usuario:", AuthService.currentUser.uid);
                 const userDoc = await getDoc(doc(db, "usuarios", AuthService.currentUser.uid));
+                
                 if (userDoc.exists()) {
                     const userData = userDoc.data();
+                    console.log("Datos de usuario obtenidos:", userData);
+                    
                     const direcciones = userData.direcciones || [];
                     const direccionPrincipal = userData.direccionPrincipal;
+                    
+                    console.log("Direcciones disponibles:", direcciones.length);
+                    console.log("Dirección principal:", direccionPrincipal);
                     
                     // Buscar la dirección principal o usar la primera disponible
                     let direccion = direcciones.find(dir => dir.id === direccionPrincipal) || direcciones[0];
                     
                     if (direccion) {
+                        console.log("Dirección seleccionada:", direccion);
                         document.getElementById('shipping-address').innerHTML = `
                             <div class="flex justify-between">
                                 <div>
@@ -247,16 +293,20 @@
                             </div>
                         `;
                     } else {
+                        console.log("No se encontraron direcciones");
                         document.getElementById('shipping-address').innerHTML = `
                             <p class="text-gray-500">No tienes direcciones guardadas</p>
                             <a href="/views/profile.html?section=addresses&redirect=checkout" class="text-primary hover:underline">Agregar dirección</a>
                         `;
                     }
+                } else {
+                    console.log("Documento de usuario no existe");
+                    throw new Error("No se encontró el documento del usuario");
                 }
             } catch (error) {
                 console.error("Error al cargar dirección de envío:", error);
                 document.getElementById('shipping-address').innerHTML = `
-                    <p class="text-red-500">Error al cargar la dirección de envío</p>
+                    <p class="text-red-500">Error al cargar la dirección de envío: ${error.message}</p>
                     <a href="/views/profile.html?section=addresses" class="text-primary hover:underline">Gestionar direcciones</a>
                 `;
             }
