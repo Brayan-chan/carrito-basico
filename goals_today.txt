@@ -1,31 +1,24 @@
-1. Estructura del proyecto: Una tienda online con un sistema de pago integrado con Mercado Pago.
-2. Archivos HTML:
+TAREAS DEL DÍA - IMPLEMENTACIÓN E-COMMERCE
 
-1. index.html: La página principal de la tienda con productos
-2. detalles_producto.html: Una página para mostrar detalles de un producto específico
-3. detalle-pago.html: Una página de checkout para procesar pagos
+1. VISTA ADMIN:
+    - Crear dashboard principal
+    - Implementar sistema de autenticación para administradores
+    - Diseñar interfaz para gestión de pedidos
+    - Agregar funcionalidad CRUD para productos
+    - Implementar sistema de estados de pedidos
 
+2. LOGÍSTICA DE PEDIDOS:
+    - Crear flujo de estados (Pendiente → En proceso → Enviado → Entregado)
+    - Implementar sistema de notificaciones
+    - Agregar tracking number para seguimiento
 
+3. VISTA USUARIO:
+    - Diseñar sección "Mis Pedidos"
+    - Implementar timeline de seguimiento estilo Mercado Libre
+    - Agregar detalles de envío y tracking
+    - Implementar sistema de notificaciones por cambios de estado
 
-3. Archivos JavaScript del servidor:
-
-1. index.js: Archivo principal del servidor Express
-2. payment.controller.js: Controlador para manejar pagos con Mercado Pago
-3. payment.routes.js: Rutas para la API de pagos
-
-
-
-
-
-El usuario quiere:
-
-1. Conectar el index.html con detalles_producto.html para que al hacer clic en un producto se muestre su detalle
-2. Implementar una forma de mostrar detalles de productos sin crear múltiples archivos HTML (reutilizando la misma plantilla)
-3. Recibir consejos sobre buenas prácticas
-
-
-Necesito crear una solución que:
-
-- Implemente un sistema para cargar dinámicamente los detalles de productos
-- Utilice JavaScript para manejar la navegación entre páginas
-- Siga buenas prácticas de desarrollo web
+4. TESTING:
+    - Probar flujo completo admin-usuario
+    - Verificar actualizaciones en tiempo real
+    - Validar notificaciones
