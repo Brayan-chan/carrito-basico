@@ -48,12 +48,12 @@ export const createOrder = async (req, res) => {
             body: {
                 items: orderItems,
                 back_urls: {
-                    success: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/success`,
-                    failure: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/failure`,
-                    pending: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/pending`
+                    success: `${process.env.APP_URL || 'https://6332-187-189-54-10.ngrok-free.app'}/api/success`,
+                    failure: `${process.env.APP_URL || 'https://6332-187-189-54-10.ngrok-free.app'}/api/failure`,
+                    pending: `${process.env.APP_URL || 'https://6332-187-189-54-10.ngrok-free.app'}/api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/webhook`,
+                notification_url: `${process.env.APP_URL || 'https://6332-187-189-54-10.ngrok-free.app'}/api/webhook`,
                 external_reference: orderId
             }
         });
