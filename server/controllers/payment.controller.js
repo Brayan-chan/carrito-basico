@@ -48,12 +48,12 @@ export const createOrder = async (req, res) => {
             body: {
                 items: orderItems,
                 back_urls: {
-                    success: `${process.env.APP_URL || 'http://localhost:3000'}/api/success`,
-                    failure: `${process.env.APP_URL || 'http://localhost:3000'}/api/failure`,
-                    pending: `${process.env.APP_URL || 'http://localhost:3000'}/api/pending`
+                    success: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/success`,
+                    failure: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/failure`,
+                    pending: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/pending`
                 },
                 auto_return: 'approved',
-                notification_url: `${process.env.APP_URL || 'http://localhost:3000'}/api/webhook`,
+                notification_url: `${process.env.APP_URL || 'https://1518-189-174-45-243.ngrok-free.app'}/api/webhook`,
                 external_reference: orderId
             }
         });

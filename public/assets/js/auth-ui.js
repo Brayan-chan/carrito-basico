@@ -18,7 +18,7 @@ export function updateAuthUI() {
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-count absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
         </a>
-        <button id="logout-button" class="text-dark hover:text-primary hidden md:block">
+        <button id="logout-button" class="text-dark hover:text-primary">
           <i class="fas fa-sign-out-alt mr-1"></i>
           <span>Salir</span>
         </button>
@@ -41,21 +41,17 @@ export function updateAuthUI() {
   } else {
     // Usuario no autenticado
     authLinksContainer.innerHTML = `
-      <div class="flex items-center">
-        <a href="/views/login.html" class="text-dark hover:text-primary mr-4">
-          <i class="fas fa-sign-in-alt mr-1"></i>
-          <span class="hidden md:inline">Ingresar</span>
-        </a>
-        <a href="/views/register.html" class="text-dark hover:text-primary mr-4 hidden md:block">
-          <i class="fas fa-user-plus mr-1"></i>
-          <span>Registrarse</span>
-        </a>
-        <a href="/views/cart.html" class="text-dark hover:text-primary relative cart-button">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="cart-count absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
-        </a>
-      </div>
-    `
+  <div class="flex items-center">
+    <a href="/views/login.html" class="text-dark hover:text-primary mr-4">
+      <i class="fas fa-sign-in-alt mr-1"></i>
+      <span>Ingresar</span>
+    </a>
+    <a href="/views/cart.html" class="text-dark hover:text-primary relative cart-button">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+    </a>
+  </div>
+`
   }
 
   // Actualizar contador del carrito
