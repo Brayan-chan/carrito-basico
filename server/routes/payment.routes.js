@@ -1,6 +1,14 @@
 import { Router } from "express";
 import { createOrder, receiveWebhook } from "../controllers/payment.controller.js";
 
+// Importamos modulos para poder servir archivos estaticos
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Obtenemos la ruta del archivo actual
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const router = Router();
 
 // Ruta POST para crear una orden
@@ -8,7 +16,8 @@ router.post('/create-order', createOrder);
 
 // Ruta GET para recibir el éxito del pago
 router.get('/success', (req, res) => {
-    res.send('Pago exitoso! Gracias por tu compra.');
+    const successPagePath = path.join(__dirname, '../../public/views/payment-success.html');
+    res.sendFile(successPagePath);
 });
 
 // Ruta GET para recibir el fracaso del pago
