@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,25 +23,29 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-100 min-h-screen">
     <!-- Banner Superior -->
     <div class="bg-primary text-white text-center py-1 text-xs md:text-sm">
         <p>Panel de Administración</p>
     </div>
-    
+
     <!-- Header -->
     <header class="bg-secondary py-3 px-4 md:px-6 shadow-md">
         <div class="container mx-auto flex flex-wrap items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="/" class="flex items-center">
-                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                            clip-rule="evenodd"></path>
                     </svg>
                     <span class="ml-2 text-xl font-bold text-dark">ShopZone Admin</span>
                 </a>
             </div>
-            
+
             <!-- Iconos de navegación -->
             <div class="flex items-center" id="auth-links">
                 <!-- Se llenará dinámicamente con auth-ui.js -->
@@ -101,12 +106,16 @@
                 <h3 class="text-gray-700 text-3xl font-medium">Dashboard</h3>
 
                 <!-- Alerta de error (oculta por defecto) -->
-                <div id="error-alert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-4" role="alert">
+                <div id="error-alert"
+                    class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-4"
+                    role="alert">
                     <span id="error-message" class="block sm:inline"></span>
                     <button id="close-alert" class="absolute top-0 right-0 px-4 py-3">
-                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
                             <title>Cerrar</title>
-                            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                            <path
+                                d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
                         </svg>
                     </button>
                 </div>
@@ -169,20 +178,37 @@
                     <h4 class="text-gray-600 font-medium">Pedidos recientes</h4>
                     <div class="mt-4">
                         <div class="bg-white shadow rounded-md overflow-hidden">
+                            <div id="alerts-container"
+                                class="hidden bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative my-4">
+                                <span id="alerts-message" class="block sm:inline"></span>
+                            </div>
                             <table class="min-w-full bg-white">
                                 <thead class="bg-gray-50 border-b">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            ID</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Cliente</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Fecha</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Total</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Estado</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-gray-200" id="recent-orders-table">
+                                <tbody class="divide-y divide-gray-200" id="low-stock-table">
                                     <tr>
-                                        <td class="px-6 py-4 text-sm text-gray-500" colspan="6">Cargando pedidos...</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500" colspan="5">Cargando productos...
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -198,16 +224,27 @@
                             <table class="min-w-full bg-white">
                                 <thead class="bg-gray-50 border-b">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Producto</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock actual</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock mínimo</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            ID</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Producto</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Stock actual</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Stock mínimo</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200" id="low-stock-table">
                                     <tr>
-                                        <td class="px-6 py-4 text-sm text-gray-500" colspan="5">Cargando productos...</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500" colspan="5">Cargando productos...
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -223,118 +260,130 @@
     <script type="module" src="/assets/js/auth-service.js"></script>
     <script type="module" src="/assets/js/auth-ui.js"></script>
     <script type="module">
-        import { 
-            collection, 
-            query, 
-            where, 
-            orderBy, 
-            limit, 
-            getDocs, 
+        import {
+            collection,
+            query,
+            where,
+            orderBy,
+            limit,
+            getDocs,
             getDoc,
             doc,
             Timestamp
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        
+
         import { db } from "/assets/js/firebase-config.js";
         import AuthService from "/assets/js/auth-service.js";
-        
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Verificar si el usuario está autenticado y es administrador
-            if (!AuthService.isAuthenticated()) {
-                window.location.href = '/views/login.html';
-                return;
-            }
-            
-            // Esperar a que se cargue el rol del usuario
-            await AuthService.getUserRole();
-            
-            if (!AuthService.isAdmin()) {
-                // Redirigir a la página principal si no es administrador
-                window.location.href = '/';
-                return;
-            }
-            
-            // Referencias a elementos del DOM
-            const errorAlert = document.getElementById('error-alert');
-            const errorMessage = document.getElementById('error-message');
-            
-            // Cerrar alerta
-            document.getElementById('close-alert').addEventListener('click', () => {
-                errorAlert.classList.add('hidden');
-            });
-            
-            // Cargar datos del dashboard
+
+        // filepath: /Users/brayanchan/Documents/Brayan/carrito-basico/public/views/admin/dashboard.html
+        document.addEventListener('DOMContentLoaded', async function () {
             try {
+                console.log("Verificando autenticación y rol del usuario...");
+
+                // Esperar a que Firebase inicialice el estado de autenticación
+                while (!AuthService.authInitialized) {
+                    await new Promise(resolve => setTimeout(resolve, 100)); // Esperar 100ms
+                }
+
+                // Verificar si el usuario está autenticado
+                if (!AuthService.isAuthenticated()) {
+                    console.log("Usuario no autenticado, redirigiendo a login...");
+                    window.location.href = '/views/login.html';
+                    return;
+                }
+
+                // Obtener el rol del usuario
+                const userRole = await AuthService.getUserRole();
+
+                // Verificar si el usuario es administrador
+                if (userRole !== 'admin') {
+                    console.log("Usuario no es administrador, redirigiendo a la tienda...");
+                    window.location.href = '/';
+                    return;
+                }
+
+                console.log("Usuario autenticado como admin, cargando dashboard...");
+                // Cargar datos del dashboard
                 await loadDashboardData();
             } catch (error) {
-                console.error("Error al cargar datos del dashboard:", error);
-                errorMessage.textContent = error.message || 'Error al cargar los datos del dashboard';
-                errorAlert.classList.remove('hidden');
+                console.error("Error al verificar autenticación o cargar datos del dashboard:", error);
             }
         });
-        
+
         // Función para cargar datos del dashboard
         async function loadDashboardData() {
             // Cargar contadores
             await loadCounters();
-            
+
             // Cargar pedidos recientes
             await loadRecentOrders();
-            
+
             // Cargar productos con stock bajo
             await loadLowStockProducts();
         }
-        
+
         // Función para cargar contadores
         async function loadCounters() {
             try {
-                // Obtener fecha de hoy (inicio del día)
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
                 const todayTimestamp = Timestamp.fromDate(today);
-                
+
                 // Contar pedidos nuevos (de hoy)
                 const ordersQuery = query(
                     collection(db, "pedidos"),
                     where("fechaPedido", ">=", todayTimestamp),
                     orderBy("fechaPedido", "desc")
                 );
-                
+
                 const ordersSnapshot = await getDocs(ordersQuery);
-                document.getElementById('orders-count').textContent = ordersSnapshot.size;
-                
+                const ordersCount = ordersSnapshot.size;
+                document.getElementById('orders-count').textContent = ordersCount;
+
                 // Calcular ventas del día
                 let salesTotal = 0;
+                let refundedOrders = 0;
                 ordersSnapshot.forEach(doc => {
-                    salesTotal += doc.data().total || 0;
+                    const order = doc.data();
+                    if (order.estado === 'reembolsado') {
+                        refundedOrders++;
+                    } else {
+                        salesTotal += order.total || 0;
+                    }
                 });
-                
+
                 document.getElementById('sales-total').textContent = formatCurrency(salesTotal);
-                
+
+                // Mostrar mensaje si hay pedidos reembolsados
+                if (refundedOrders > 0) {
+                    showAlert(`${refundedOrders} pedidos fueron reembolsados.`);
+                }
+
                 // Contar usuarios nuevos (de hoy)
                 const usersQuery = query(
                     collection(db, "usuarios"),
                     where("fechaRegistro", ">=", todayTimestamp)
                 );
-                
+
                 const usersSnapshot = await getDocs(usersQuery);
                 document.getElementById('users-count').textContent = usersSnapshot.size;
-                
+
                 // Contar productos con stock bajo
                 const stockQuery = query(
                     collection(db, "existencias"),
-                    where("stockActual", "<=", where("stockMinimo", ">=", 0))
+                    where("stockActual", "<=", 0),
+                    where("stockMinimo", ">=", 0)
                 );
-                
+
                 const stockSnapshot = await getDocs(stockQuery);
                 document.getElementById('low-stock-count').textContent = stockSnapshot.size;
-                
+
             } catch (error) {
                 console.error("Error al cargar contadores:", error);
                 throw error;
             }
         }
-        
+
         // Función para cargar pedidos recientes
         async function loadRecentOrders() {
             try {
@@ -343,10 +392,10 @@
                     orderBy("fechaPedido", "desc"),
                     limit(5)
                 );
-                
+
                 const ordersSnapshot = await getDocs(ordersQuery);
                 const ordersTableBody = document.getElementById('recent-orders-table');
-                
+
                 if (ordersSnapshot.empty) {
                     ordersTableBody.innerHTML = `
                         <tr>
@@ -355,13 +404,13 @@
                     `;
                     return;
                 }
-                
+
                 let ordersHTML = '';
-                
+
                 for (const orderDoc of ordersSnapshot.docs) {
                     const order = orderDoc.data();
                     const orderId = orderDoc.id;
-                    
+
                     // Obtener datos del usuario
                     let userName = 'Usuario desconocido';
                     if (order.usuarioId) {
@@ -370,7 +419,7 @@
                             userName = userDoc.data().nombre || userDoc.data().email || 'Usuario desconocido';
                         }
                     }
-                    
+
                     // Formatear fecha
                     const orderDate = order.fechaPedido ? order.fechaPedido.toDate() : new Date();
                     const formattedDate = orderDate.toLocaleDateString('es-ES', {
@@ -380,7 +429,7 @@
                         hour: '2-digit',
                         minute: '2-digit'
                     });
-                    
+
                     // Determinar clase de estado
                     let statusClass = '';
                     switch (order.estado) {
@@ -399,7 +448,7 @@
                         default:
                             statusClass = 'bg-gray-100 text-gray-800';
                     }
-                    
+
                     ordersHTML += `
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${orderId}</td>
@@ -417,76 +466,15 @@
                         </tr>
                     `;
                 }
-                
+
                 ordersTableBody.innerHTML = ordersHTML;
-                
+
             } catch (error) {
                 console.error("Error al cargar pedidos recientes:", error);
                 throw error;
             }
         }
-        
-        // Función para cargar productos con stock bajo
-        async function loadLowStockProducts() {
-            try {
-                // En un caso real, esto sería una consulta más compleja que compare stockActual con stockMinimo
-                // Para simplificar, usaremos una consulta básica
-                const stockQuery = query(
-                    collection(db, "existencias"),
-                    orderBy("stockActual", "asc"),
-                    limit(5)
-                );
-                
-                const stockSnapshot = await getDocs(stockQuery);
-                const stockTableBody = document.getElementById('low-stock-table');
-                
-                if (stockSnapshot.empty) {
-                    stockTableBody.innerHTML = `
-                        <tr>
-                            <td class="px-6 py-4 text-sm text-gray-500" colspan="5">No hay productos con stock bajo</td>
-                        </tr>
-                    `;
-                    return;
-                }
-                
-                let stockHTML = '';
-                
-                for (const stockDoc of stockSnapshot.docs) {
-                    const stock = stockDoc.data();
-                    const productId = stockDoc.id;
-                    
-                    // Obtener datos del producto
-                    let productName = 'Producto desconocido';
-                    const productDoc = await getDoc(doc(db, "productos", productId));
-                    if (productDoc.exists()) {
-                        productName = productDoc.data().nombre || 'Producto desconocido';
-                    }
-                    
-                    // Determinar si el stock es crítico
-                    const isCritical = stock.stockActual <= (stock.stockMinimo || 0);
-                    const stockClass = isCritical ? 'text-red-600 font-medium' : 'text-yellow-600';
-                    
-                    stockHTML += `
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${productId}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${productName}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm ${stockClass}">${stock.stockActual || 0}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${stock.stockMinimo || 0}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="/views/admin/inventory/edit.html?id=${productId}" class="text-primary hover:underline">Actualizar stock</a>
-                            </td>
-                        </tr>
-                    `;
-                }
-                
-                stockTableBody.innerHTML = stockHTML;
-                
-            } catch (error) {
-                console.error("Error al cargar productos con stock bajo:", error);
-                throw error;
-            }
-        }
-        
+
         // Función para formatear moneda
         function formatCurrency(amount) {
             return new Intl.NumberFormat('es-MX', {
@@ -494,11 +482,20 @@
                 currency: 'MXN'
             }).format(amount);
         }
-        
+
         // Función para capitalizar la primera letra
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
+
+        // Función para mostrar alertas
+        function showAlert(message) {
+            const alertsContainer = document.getElementById('alerts-container');
+            const alertsMessage = document.getElementById('alerts-message');
+            alertsMessage.textContent = message;
+            alertsContainer.classList.remove('hidden');
+        }
     </script>
 </body>
+
 </html>
