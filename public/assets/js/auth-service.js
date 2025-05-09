@@ -143,21 +143,24 @@ const AuthService = {
 
   // Obtener el rol del usuario actual
   async getUserRole() {
-    if (!this.currentUser) return null
+    if (!this.currentUser) {
+      console.warn("No hay un usuario autenticado.");
+      return null;
+    }
 
     try {
-      console.log("Obteniendo rol del usuario:", this.currentUser.uid)
-      const userDoc = await getDoc(doc(db, "usuarios", this.currentUser.uid))
+      console.log("Obteniendo rol del usuario:", this.currentUser.uid);
+      const userDoc = await getDoc(doc(db, "usuarios", this.currentUser.uid));
       if (userDoc.exists()) {
-        this.userRole = userDoc.data().rol
-        console.log("Rol del usuario:", this.userRole)
-        return this.userRole
+        this.userRole = userDoc.data().rol;
+        console.log("Rol del usuario:", this.userRole);
+        return this.userRole;
       }
-      console.log("Documento de usuario no encontrado")
-      return null
+      console.warn("Documento de usuario no encontrado en Firestore.");
+      return null;
     } catch (error) {
-      console.error("Error al obtener rol de usuario:", error)
-      return null
+      console.error("Error al obtener rol de usuario:", error);
+      return null;
     }
   },
 
